@@ -37,7 +37,6 @@ app.get("/EcoKart/cart",( req , res ) =>{
 // -----------------------------------------------------------------------------------------------------------------
 
 // api routes exposed to the frontend.
-
 // landing items sending
 app.get("/EcoKart/data",async( req,res )=>{
 try {
@@ -54,6 +53,23 @@ try {
 }
 });
 
+// api routes exposed to the frontend.
+// loading product(s).
+app.get("/EcoKart/productdata/:id",async( req,res )=>{
+try {
+    const id = req.params.id;
+    let response = await pool.query("select * from product where id = $1",[id]);
+    if(response.rows.length > 0){
+        // console.log(response.rows);
+        res.status(200).json({message:response.rows});
+    } else {
+        res.status(400).json({message:" no data found"})
+    }
+} catch (error) {
+    res.status(500).json({message:"Internal server error"})
+    console.log(error);
+}
+});
 
 
 

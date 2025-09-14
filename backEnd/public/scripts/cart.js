@@ -2,7 +2,7 @@
 //   { id: 1, name: "Eco Water Bottle", qty: 2, price: 12.99 },
 //   { id: 2, name: "Reusable Bag", qty: 1, price: 5.49 },
 // ];
-let cart;
+let cart=[];
 function bringCartData() {
   let cartData = localStorage.getItem("cart");
   if (cartData) {
@@ -60,6 +60,8 @@ function clearCart() {
 
 function checkout() {
   alert("Proceeding to checkout...(no action yet)");
+  localStorage.setItem("cart",JSON.stringify([]));
+  bringCartData();
   // Implement checkout logic here
 }
 
