@@ -2,7 +2,7 @@ const container = document.getElementById("itemContainer"); // the data holder
 
 async function getItems() {
   try {
-    let response = await fetch("http://localhost:4000/EcoKart/data");
+    let response = await fetch("http://192.168.0.176:4000/EcoKart/data");
     if (!response.ok) {
       container.innerHTML = "<h1> No Items Found...</h1>";
     } else {

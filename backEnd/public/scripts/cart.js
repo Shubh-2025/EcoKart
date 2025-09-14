@@ -1,8 +1,28 @@
-// let cart = [
-//   { id: 1, name: "Eco Water Bottle", qty: 2, price: 12.99 },
-//   { id: 2, name: "Reusable Bag", qty: 1, price: 5.49 },
-// ];
-let cart=[];
+const coupons = ["FAB20", "FAB30", "FAB40", "FAB50"];
+let coupon = document.querySelector("#coupon");
+let totalcount = document.getElementById("cart-total");
+let actual = 0;
+
+coupon.addEventListener("input",() => {
+  if (coupons.includes(coupon.value)) {
+    switch (coupon.value) {
+      case "FAB20":
+        totalcount.textContent = (actual * 0.8).toFixed(2);
+        break;
+      case "FAB30":
+        totalcount.textContent = (actual * 0.7).toFixed(2);
+        break;
+      case "FAB40":
+        totalcount.textContent = (actual * 0.6).toFixed(2);
+        break;
+      case "FAB50":
+        totalcount.textContent = (actual * 0.5).toFixed(2);
+        break;
+    }
+  }
+});
+
+let cart = [];
 function bringCartData() {
   let cartData = localStorage.getItem("cart");
   if (cartData) {
@@ -32,8 +52,8 @@ function renderCart() {
       tr.innerHTML = `
                         <td class="px-4 py-3">${item.name}</td>
                         <td class="px-4 py-3">${item.qty}</td>
-                        <td class="px-4 py-3">$${item.price.toFixed(2)}</td>
-                        <td class="px-4 py-3">$${subtotal.toFixed(2)}</td>
+                        <td class="px-4 py-3">₹${item.price.toFixed(2)}</td>
+                        <td class="px-4 py-3">₹${subtotal.toFixed(2)}</td>
                         <td class="px-4 py-3">
                             <button onclick="removeItem(${
                               item.id
@@ -44,7 +64,7 @@ function renderCart() {
     });
     document.getElementById("checkout-btn").disabled = false;
   }
-  document.getElementById("cart-total").textContent = total.toFixed(2);
+  totalcount.textContent =actual= total.toFixed(2);
 }
 
 function removeItem(id) {
@@ -60,7 +80,7 @@ function clearCart() {
 
 function checkout() {
   alert("Proceeding to checkout...(no action yet)");
-  localStorage.setItem("cart",JSON.stringify([]));
+  localStorage.setItem("cart", JSON.stringify([]));
   bringCartData();
   // Implement checkout logic here
 }

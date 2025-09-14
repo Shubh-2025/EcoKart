@@ -26,7 +26,7 @@ const productContainer = document.getElementById("productContainer");
 // IIFE - for porduct data fetch
 const getProduct = async ()=> {
 try {
-    const response = await fetch(`http://localhost:4000/EcoKart/productdata/${localStorage.getItem("id")}`);
+    const response = await fetch(`http://192.168.0.176:4000/EcoKart/productdata/${localStorage.getItem("id")}`);
     if(!response.ok){
       window.location.href = "/EcoKart"
     } else {
