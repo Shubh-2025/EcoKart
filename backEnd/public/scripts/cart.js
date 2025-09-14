@@ -1,0 +1,67 @@
+// let cart = [
+//   { id: 1, name: "Eco Water Bottle", qty: 2, price: 12.99 },
+//   { id: 2, name: "Reusable Bag", qty: 1, price: 5.49 },
+// ];
+let cart;
+function bringCartData() {
+  let cartData = localStorage.getItem("cart");
+  if (cartData) {
+    console.log(cartData);
+    cart = JSON.parse(cartData);
+  }
+  console.log(cart);
+
+  renderCart();
+}
+// invoking
+bringCartData();
+
+function renderCart() {
+  const tbody = document.getElementById("cart-items");
+  tbody.innerHTML = "";
+  let total = 0;
+  if (cart.length === 0) {
+    tbody.innerHTML =
+      '<tr><td colspan="5" class="text-center py-6 text-gray-500">Your cart is empty.</td></tr>';
+    document.getElementById("checkout-btn").disabled = true;
+  } else {
+    cart.forEach((item) => {
+      const subtotal = item.qty * item.price;
+      total += subtotal;
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+                        <td class="px-4 py-3">${item.name}</td>
+                        <td class="px-4 py-3">${item.qty}</td>
+                        <td class="px-4 py-3">$${item.price.toFixed(2)}</td>
+                        <td class="px-4 py-3">$${subtotal.toFixed(2)}</td>
+                        <td class="px-4 py-3">
+                            <button onclick="removeItem(${
+                              item.id
+                            })" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded transition">Remove</button>
+                        </td>
+                    `;
+      tbody.appendChild(tr);
+    });
+    document.getElementById("checkout-btn").disabled = false;
+  }
+  document.getElementById("cart-total").textContent = total.toFixed(2);
+}
+
+function removeItem(id) {
+  cart = cart.filter((item) => item.id !== id);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
+
+function clearCart() {
+  localStorage.setItem("cart", JSON.stringify([]));
+  renderCart();
+}
+
+function checkout() {
+  alert("Proceeding to checkout...(no action yet)");
+  // Implement checkout logic here
+}
+
+// Initial render
+renderCart();

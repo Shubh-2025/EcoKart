@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Product Details - EcoKart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel ='icon' href="/images/logo.png">
+  </head>
+  <header class="w-full bg-green-100 py-6 shadow-md">
+    <div class="max-w-6xl mx-auto px-4 flex items-center justify-between">
+      <h1 class="text-3xl font-bold text-green-700 cursor-pointer" onclick="window.location.href='/EcoKart'">EcoKart</h1>
+      <nav>
+        <img
+          src="/images/person.png"
+          alt="About"
+          class="w-10 h-10 rounded mx-3 inline-block cursor-pointer"
+        />
+        <!--toggle hidden-->
+        <img
+          src="/images/cart.png"
+          alt="Cart"
+          class="w-10 h-10 rounded mx-3 inline-block cursor-pointer"
+          onclick="window.location.href='/EcoKart/cart'"
+        />
+        <!--toggle hidden-->
+        <img
+          src="/images/user.png"
+          alt="Profile"
+          class="w-10 h-10 rounded mx-3 inline-block cursor-pointer"
+        />
+        <!--toggle hidden-->
+        <a href="/login" class="text-red-700 font-medium mx-2 hidden">Login</a>
+        <!--toggle hidden-->
+      </nav>
+    </div>
+  </header>
+  <body class="bg-green-50 font-sans">
+    <div class="max-w-5xl mx-auto my-4 bg-green-100 p-6 rounded-lg shadow">
+      <div class="flex flex-col md:flex-row gap-10">
+        <div class="min-w-50 md:min-w-150 lg:min-w-150 md:w-1/3">
+          <img
+            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80"
+            alt="Product Image"
+            class="w-full rounded"
+          />
+        </div>
+        <div class="md:w-2/3 flex flex-col">
+          <div class="text-2xl font-bold mb-2" id="product-title">
+            Eco-Friendly Water Bottle
+          </div>
+          <div
+            class="text-green-600 text-xl font-semibold mb-4"
+            id="product-price"
+          >
+            <span>₹</span><span id="price">100</span>
+          </div>
+          <div class="mb-6 text-gray-600" id="product-desc">
+            Stay hydrated and eco-conscious with our reusable water bottle made
+            from sustainable materials. BPA-free, leak-proof, and perfect for
+            daily use.
+          </div>
+          <form
+            class="flex items-center gap-3 mb-4"
+            onsubmit="addToCart(event)"
+          >
+            <label for="quantity" class="font-medium">Quantity:</label>
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              min="1"
+              value="1"
+              required
+              class="w-16 px-2 py-1 border rounded outline-none focus:ring-2 focus:ring-green-400"
+            />
+            <button
+              id="cartBtn"
+              type="submit"
+              class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded transition cursor-pointer"
+            >
+              Add to Cart
+            </button>
+          </form>
+          <div id="cart-message" class="text-green-600 font-semibold hidden">
+            Added to cart!
+          </div>
+        </div>
+      </div>
+
+      <hr class="mt-8">
+      <div class="mt-12">
+        <div class="text-lg font-semibold mb-4">Recommended Products</div>
+        <div class="flex flex-wrap gap-3 sm:justify-around lg:justify-around">
+          <div class="bg-green-50 rounded-md p-3 w-44 shadow-sm">
+            <img
+              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80"
+              alt="Bamboo Cup"
+              class="w-full rounded"
+            />
+            <div class="font-medium mt-2 mb-1">Bamboo Cup</div>
+            <div class="text-green-600 font-semibold"><span>₹</span><span id="price">100</span></div>
+          </div>
+          <div class="bg-green-50 rounded-md p-3 w-44 shadow-sm">
+            <img
+              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80"
+              alt="Reusable Straw"
+              class="w-full rounded"
+            />
+            <div class="font-medium mt-2 mb-1">Reusable Straw</div>
+            <div class="text-green-600 font-semibold"><span>₹</span><span id="price">100</span></div>
+          </div>
+          <div class="bg-green-50 rounded-md p-3 w-44 shadow-sm">
+            <img
+              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80"
+              alt="Organic Tote Bag"
+              class="w-full rounded"
+            />
+            <div class="font-medium mt-2 mb-1">Organic Tote Bag</div>
+            <div class="text-green-600 font-semibold"><span>₹</span><span id="price">100</span></div>
+          </div>
+          <div class="bg-green-50 rounded-md p-3 w-44 shadow-sm">
+            <img
+              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80"
+              alt="Eco Lunch Box"
+              class="w-full rounded"
+            />
+            <div class="font-medium mt-2 mb-1">Eco Lunch Box</div>
+            <div class="text-green-600 font-semibold"><span>₹</span><span id="price">100</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-green-100 text-lg text-green-900 mt-10">
+      <div class="max-w-7xl mx-auto px-4 py-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 class="font-bold mb-3 text-green-900">Get to Know Us</h3>
+            <ul>
+              <li><a href="#" class="hover:underline">About Us</a></li>
+              <li><a href="#" class="hover:underline">Careers</a></li>
+              <li><a href="#" class="hover:underline">Press Releases</a></li>
+              <li><a href="#" class="hover:underline">EcoKart Science</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-bold mb-3 text-green-900">Connect with Us</h3>
+            <ul>
+              <li><a href="#" class="hover:underline">Facebook</a></li>
+              <li><a href="#" class="hover:underline">Twitter</a></li>
+              <li><a href="#" class="hover:underline">Instagram</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-bold mb-3 text-green-900">Make Money with Us</h3>
+            <ul>
+              <li><a href="#" class="hover:underline">Sell on EcoKart</a></li>
+              <li>
+                <a href="#" class="hover:underline">Become an Affiliate</a>
+              </li>
+              <li>
+                <a href="#" class="hover:underline">Advertise Your Products</a>
+              </li>
+              <li><a href="#" class="hover:underline">EcoKart Pay</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-bold mb-3 text-green-900">Let Us Help You</h3>
+            <ul>
+              <li><a href="#" class="hover:underline">Your Account</a></li>
+              <li><a href="#" class="hover:underline">Returns Centre</a></li>
+              <li>
+                <a href="#" class="hover:underline">100% Purchase Protection</a>
+              </li>
+              <li><a href="#" class="hover:underline">Help</a></li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="border-t border-green-700 pt-6 flex flex-col md:flex-row items-center justify-between"
+        >
+          <div class="flex items-center space-x-2">
+            <span class="font-bold text-lg text-green-900">EcoKart</span>
+          </div>
+          <div class="text-green-900 text-lg text-center md:text-center">
+            &copy; 2025 CodeClouds. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="/scripts/product.js"></script>
+  </body>
+</html>
