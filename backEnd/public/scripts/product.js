@@ -6,15 +6,12 @@ function addToCart(event) {
   cart.push({...itemdata,qty:document.getElementById('quantity').value});
   console.log(cart)
   localStorage.setItem('cart',JSON.stringify(cart));
+
   document.getElementById("cart-message").classList.remove("hidden");
   setTimeout(() => {
     document.getElementById("cart-message").classList.add("hidden");
+    window.location.href = "/EcoKart/cart";
   }, 2000);
-  let btn = document.getElementById("cartBtn");
-  btn.textContent = "Go to Cart";
-  btn.addEventListener("click", () => {
-    window.location.href = "/EcoKart/Cart";
-  });
 } else {
   localStorage.setItem('cart',JSON.stringify([{...itemdata,qty:document.getElementById('quantity').value}]))
 }
@@ -26,7 +23,7 @@ const productContainer = document.getElementById("productContainer");
 // IIFE - for porduct data fetch
 const getProduct = async ()=> {
 try {
-    const response = await fetch(`http://192.168.0.176:4000/EcoKart/productdata/${localStorage.getItem("id")}`);
+    const response = await fetch(`http://localhost:4000/EcoKart/productdata/${localStorage.getItem("id")}`);
     if(!response.ok){
       window.location.href = "/EcoKart"
     } else {

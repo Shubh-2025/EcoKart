@@ -1,26 +1,35 @@
-const coupons = ["FAB20", "FAB30", "FAB40", "FAB50"];
-let coupon = document.querySelector("#coupon");
 let totalcount = document.getElementById("cart-total");
 let actual = 0;
+const coupons = ["FAB20", "FAB30", "FAB40", "FAB50"];
+let coupon = document.querySelector("#coupon");
 
-coupon.addEventListener("input",() => {
-  if (coupons.includes(coupon.value)) {
-    switch (coupon.value) {
-      case "FAB20":
-        totalcount.textContent = (actual * 0.8).toFixed(2);
-        break;
-      case "FAB30":
-        totalcount.textContent = (actual * 0.7).toFixed(2);
-        break;
-      case "FAB40":
-        totalcount.textContent = (actual * 0.6).toFixed(2);
-        break;
-      case "FAB50":
-        totalcount.textContent = (actual * 0.5).toFixed(2);
-        break;
+
+function applyCoupon() {
+  coupon.addEventListener("input", (e) => {
+    const enteredCode = e.currentTarget.value.trim().toUpperCase();
+    if (coupons.includes(enteredCode)) {
+      switch (enteredCode) {
+        case "FAB20":
+          totalcount.textContent = (actual * 0.8).toFixed(2);
+          break;
+        case "FAB30":
+          totalcount.textContent = (actual * 0.7).toFixed(2);
+          break;
+        case "FAB40":
+          totalcount.textContent = (actual * 0.6).toFixed(2);
+          break;
+        case "FAB50":
+          totalcount.textContent = (actual * 0.5).toFixed(2);
+          break;
+      }
+    } else {
+      totalcount.textContent = actual;
     }
-  }
-});
+  });
+}
+
+applyCoupon();
+
 
 let cart = [];
 function bringCartData() {
@@ -32,11 +41,13 @@ function bringCartData() {
   console.log(cart);
 
   renderCart();
+  applyCoupon();
 }
 // invoking
 bringCartData();
 
 function renderCart() {
+  let cartE=0;
   const tbody = document.getElementById("cart-items");
   tbody.innerHTML = "";
   let total = 0;
@@ -45,7 +56,7 @@ function renderCart() {
       '<tr><td colspan="5" class="text-center py-6 text-gray-500">Your cart is empty.</td></tr>';
     document.getElementById("checkout-btn").disabled = true;
   } else {
-    cart.forEach((item) => {
+    cart.forEach((item,index) => {
       const subtotal = item.qty * item.price;
       total += subtotal;
       const tr = document.createElement("tr");
@@ -56,7 +67,7 @@ function renderCart() {
                         <td class="px-4 py-3">₹${subtotal.toFixed(2)}</td>
                         <td class="px-4 py-3">
                             <button onclick="removeItem(${
-                              item.id
+                              index
                             })" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded transition">Remove</button>
                         </td>
                     `;
@@ -67,15 +78,22 @@ function renderCart() {
   totalcount.textContent =actual= total.toFixed(2);
 }
 
-function removeItem(id) {
-  cart = cart.filter((item) => item.id !== id);
+function removeItem(index) {
+  cart.splice(index, 1);
   localStorage.setItem("cart", JSON.stringify(cart));
+
+  bringCartData();
   renderCart();
+  
 }
+
 
 function clearCart() {
   localStorage.setItem("cart", JSON.stringify([]));
+  coupon.textContent = "";
+  bringCartData();
   renderCart();
+  applyCoupon();
 }
 
 function checkout() {
