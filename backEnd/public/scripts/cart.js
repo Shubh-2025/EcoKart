@@ -4,6 +4,13 @@ const coupons = ["FAB20", "FAB30", "FAB40", "FAB50"];
 let coupon = document.querySelector("#coupon");
 
 
+function scrollToBottom() {
+  window.scrollTo({
+    top: document.body.scrollHeight,
+    behavior: "smooth" // makes the scroll smooth
+  });
+}
+
 function applyCoupon() {
   coupon.addEventListener("input", (e) => {
     const enteredCode = e.currentTarget.value.trim().toUpperCase();

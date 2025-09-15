@@ -1,3 +1,10 @@
+function scrollToBottom() {
+  window.scrollTo({
+    top: document.body.scrollHeight,
+    behavior: "smooth" // makes the scroll smooth
+  });
+}
+
 function addToCart(event) {
   let cart = localStorage.getItem("cart");
   if(cart) {
@@ -10,7 +17,6 @@ function addToCart(event) {
   document.getElementById("cart-message").classList.remove("hidden");
   setTimeout(() => {
     document.getElementById("cart-message").classList.add("hidden");
-    window.location.href = "/EcoKart/cart";
   }, 2000);
 } else {
   localStorage.setItem('cart',JSON.stringify([{...itemdata,qty:document.getElementById('quantity').value}]))
@@ -23,7 +29,7 @@ const productContainer = document.getElementById("productContainer");
 // IIFE - for porduct data fetch
 const getProduct = async ()=> {
 try {
-    const response = await fetch(`http://localhost:4000/EcoKart/productdata/${localStorage.getItem("id")}`);
+    const response = await fetch(`http://192.168.8.224:4000/EcoKart/productdata/${localStorage.getItem("id")}`);
     if(!response.ok){
       window.location.href = "/EcoKart"
     } else {
@@ -67,7 +73,7 @@ try {
 
       // Form
       const form = document.createElement('form');
-      form.className = 'flex items-center gap-3 mb-4';
+      form.className = 'flex items-center gap-3 mb-4 overflow-hidden';
       form.onsubmit = function (e) {
         e.preventDefault();
         addToCart(e);
