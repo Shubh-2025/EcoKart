@@ -42,10 +42,10 @@ let cart = [];
 function bringCartData() {
   let cartData = localStorage.getItem("cart");
   if (cartData) {
-    console.log(cartData);
+    // console.log(cartData);
     cart = JSON.parse(cartData);
   }
-  console.log(cart);
+  // console.log(cart);
 
   renderCart();
   applyCoupon();
@@ -53,8 +53,7 @@ function bringCartData() {
 // invoking
 bringCartData();
 
-function renderCart() {
-  let cartE=0;
+function renderCart(){
   const tbody = document.getElementById("cart-items");
   tbody.innerHTML = "";
   let total = 0;
@@ -88,7 +87,6 @@ function renderCart() {
 function removeItem(index) {
   cart.splice(index, 1);
   localStorage.setItem("cart", JSON.stringify(cart));
-
   bringCartData();
   renderCart();
   
