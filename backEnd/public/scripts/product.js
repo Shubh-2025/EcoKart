@@ -26,7 +26,7 @@ function addToCart(event) {
 let itemdata;
 // getting the container
 const productContainer = document.getElementById("productContainer");
-// IIFE - for porduct data fetch
+
 const getProduct = async ()=> {
 try {
     const response = await fetch(`http://192.168.8.224:4000/EcoKart/productdata/${localStorage.getItem("id")}`);

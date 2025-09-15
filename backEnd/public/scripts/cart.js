@@ -102,8 +102,9 @@ function clearCart() {
 }
 
 function checkout() {
-  alert("Proceeding to checkout...(no action yet)");
   localStorage.setItem("cart", JSON.stringify([]));
+
+  alert("Thank you for your purchase!\nYour order has been placed successfully.\n Total : ₹"+totalcount.textContent);
   bringCartData();
   // Implement checkout logic here
 }
