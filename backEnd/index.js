@@ -29,9 +29,13 @@ app.get("/EcoKart",( req , res ) =>{
 app.get("/EcoKart/product",( req , res ) =>{
     res.sendFile(path.join(__dirname,"pages","product.html"));
 });
-//cart page serving
+// cart page serving
 app.get("/EcoKart/cart",( req , res ) =>{
     res.sendFile(path.join(__dirname,"pages","cart.html"));
+});
+// profile page serving
+app.get("/EcoKart/profile",( req , res ) =>{
+    res.sendFile(path.join(__dirname,"pages","profile.html"));
 });
 
 // -----------------------------------------------------------------------------------------------------------------
