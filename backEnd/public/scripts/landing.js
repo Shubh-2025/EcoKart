@@ -9,7 +9,7 @@ function scrollToBottom() {
 
 async function getItems() {
   try {
-    let response = await fetch("http://192.168.8.224:4000/EcoKart/data");
+    let response = await fetch("http://localhost:4000/EcoKart/data");
     if (!response.ok) {
       container.innerHTML = "<h1> No Items Found...</h1>";
     } else {

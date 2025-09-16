@@ -29,7 +29,7 @@ const productContainer = document.getElementById("productContainer");
 
 const getProduct = async ()=> {
 try {
-    const response = await fetch(`http://192.168.8.224:4000/EcoKart/productdata/${localStorage.getItem("id")}`);
+    const response = await fetch(`http://localhost:4000/EcoKart/productdata/${localStorage.getItem("id")}`);
     if(!response.ok){
       window.location.href = "/EcoKart"
     } else {

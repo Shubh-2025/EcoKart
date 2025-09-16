@@ -2,7 +2,7 @@ let totalcount = document.getElementById("cart-total");
 let actual = 0;
 const coupons = ["FAB20", "FAB30", "FAB40", "FAB50"];
 let coupon = document.querySelector("#coupon");
-
+let cart = [];
 
 function scrollToBottom() {
   window.scrollTo({
@@ -34,11 +34,9 @@ function applyCoupon() {
     }
   });
 }
-
+//incoke the coupon discount function
 applyCoupon();
 
-
-let cart = [];
 function bringCartData() {
   let cartData = localStorage.getItem("cart");
   if (cartData) {
@@ -48,12 +46,11 @@ function bringCartData() {
   // console.log(cart);
 
   renderCart();
-  applyCoupon();
 }
 // invoking
 bringCartData();
 
-function renderCart(){
+function renderCart() {
   const tbody = document.getElementById("cart-items");
   tbody.innerHTML = "";
   let total = 0;
@@ -62,7 +59,7 @@ function renderCart(){
       '<tr><td colspan="5" class="text-center py-6 text-gray-500">Your cart is empty.</td></tr>';
     document.getElementById("checkout-btn").disabled = true;
   } else {
-    cart.forEach((item,index) => {
+    cart.forEach((item, index) => {
       const subtotal = item.qty * item.price;
       total += subtotal;
       const tr = document.createElement("tr");
@@ -72,41 +69,46 @@ function renderCart(){
                         <td class="px-4 py-3">₹${item.price.toFixed(2)}</td>
                         <td class="px-4 py-3">₹${subtotal.toFixed(2)}</td>
                         <td class="px-4 py-3">
-                            <button onclick="removeItem(${
-                              index
-                            })" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded transition">Remove</button>
+                            <button onclick="removeItem(${index
+        })" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded transition">Remove</button>
                         </td>
                     `;
       tbody.appendChild(tr);
     });
     document.getElementById("checkout-btn").disabled = false;
   }
-  totalcount.textContent =actual= total.toFixed(2);
+  totalcount.textContent = actual = total.toFixed(2);
 }
 
 function removeItem(index) {
   cart.splice(index, 1);
   localStorage.setItem("cart", JSON.stringify(cart));
+
   bringCartData();
   renderCart();
-  
+
+  if (cart.length > 0) {
+    coupon.dispatchEvent(new Event("input")); //craziest shit found today.
+    // manually dispatch any event when you like....
+  } else {
+    coupon.value = "";
+  }
 }
 
 
 function clearCart() {
   localStorage.setItem("cart", JSON.stringify([]));
-  coupon.textContent = "";
+  coupon.value = "";
+
   bringCartData();
   renderCart();
-  applyCoupon();
 }
 
 function checkout() {
   localStorage.setItem("cart", JSON.stringify([]));
 
-  alert("Thank you for your purchase!\nYour order has been placed successfully.\n Total : ₹"+totalcount.textContent);
+  alert("Thank you for your purchase!\nYour order has been placed successfully.\n Total : ₹" + totalcount.textContent);
   bringCartData();
-  // Implement checkout logic here
 }
 
 // Initial render
