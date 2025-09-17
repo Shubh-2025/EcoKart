@@ -1,18 +1,19 @@
 let totalcount = document.getElementById("cart-total");
 let actual = 0;
 const coupons = ["FAB20", "FAB30", "FAB40", "FAB50"];
+const couponmessage = document.getElementById('coupon-message');
 let coupon = document.querySelector("#coupon");
 let cart = [];
 
-(function authenticateUser(){ // check if there a authenticated token or not
-    if (!localStorage.getItem('token')) {
-      window.location.href='/EcoKart';
-    } 
-    // if no auithentication token simply redirect to home page
+(function authenticateUser() { // check if there a authenticated token or not
+  if (!localStorage.getItem('token')) {
+    window.location.href = '/EcoKart';
+  }
+  // if no auithentication token simply redirect to home page
 })();
 
-(function isloggedin(){
-  if(localStorage.getItem("token")){
+(function isloggedin() {
+  if (localStorage.getItem("token")) {
     login.classList.remove("inline-block");
     login.classList.add("hidden");
     profile.classList.remove("hidden");
@@ -21,7 +22,7 @@ let cart = [];
     profile.classList.remove("inline-block");
     profile.classList.add("hidden");
     login.classList.remove("hidden");
-    login.classList.add("inline-block");    
+    login.classList.add("inline-block");
   }
 })()
 
@@ -39,19 +40,39 @@ function applyCoupon() {
       switch (enteredCode) {
         case "FAB20":
           totalcount.textContent = (actual * 0.8).toFixed(2);
+          couponmessage.textContent = '20% off';
+          couponmessage.classList.remove("text-red-700");
+          couponmessage.classList.add("text-green-700");
           break;
         case "FAB30":
           totalcount.textContent = (actual * 0.7).toFixed(2);
+          couponmessage.textContent = '30% off';
+          couponmessage.classList.remove("text-red-700");
+          couponmessage.classList.add("text-green-700");
           break;
         case "FAB40":
           totalcount.textContent = (actual * 0.6).toFixed(2);
+          couponmessage.textContent = '40% off';
+          couponmessage.classList.remove("text-red-700");
+          couponmessage.classList.add("text-green-700");
           break;
         case "FAB50":
           totalcount.textContent = (actual * 0.5).toFixed(2);
+          couponmessage.textContent = '50% off';
+          couponmessage.classList.remove("text-red-700");
+          couponmessage.classList.add("text-green-700");
           break;
       }
     } else {
       totalcount.textContent = actual;
+      if (enteredCode != "") {
+        couponmessage.textContent = 'Invalid Coupon';
+        couponmessage.classList.remove("text-green-700");
+        couponmessage.classList.add("text-red-700");
+
+      } else {
+        couponmessage.textContent = '';
+      }
     }
   });
 }
