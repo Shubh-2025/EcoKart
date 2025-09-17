@@ -5,6 +5,20 @@ function scrollToBottom() {
   });
 }
 
+(function isloggedin(){
+  if(localStorage.getItem("token")){
+    login.classList.remove("inline-block");
+    login.classList.add("hidden");
+    profile.classList.remove("hidden");
+    profile.classList.add("inline-block");
+  } else {
+    profile.classList.remove("inline-block");
+    profile.classList.add("hidden");
+    login.classList.remove("hidden");
+    login.classList.add("inline-block");    
+  }
+})()
+
 function addToCart(event) {
   let cart = localStorage.getItem("cart");
   if(cart) {

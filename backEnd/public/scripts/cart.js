@@ -4,6 +4,27 @@ const coupons = ["FAB20", "FAB30", "FAB40", "FAB50"];
 let coupon = document.querySelector("#coupon");
 let cart = [];
 
+(function authenticateUser(){ // check if there a authenticated token or not
+    if (!localStorage.getItem('token')) {
+      window.location.href='/EcoKart';
+    } 
+    // if no auithentication token simply redirect to home page
+})();
+
+(function isloggedin(){
+  if(localStorage.getItem("token")){
+    login.classList.remove("inline-block");
+    login.classList.add("hidden");
+    profile.classList.remove("hidden");
+    profile.classList.add("inline-block");
+  } else {
+    profile.classList.remove("inline-block");
+    profile.classList.add("hidden");
+    login.classList.remove("hidden");
+    login.classList.add("inline-block");    
+  }
+})()
+
 function scrollToBottom() {
   window.scrollTo({
     top: document.body.scrollHeight,

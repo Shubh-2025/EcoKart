@@ -2,44 +2,49 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>EcoKart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="icon" href="/images/logo.png" />
+    <title>EcoKart</title>
   </head>
   <!-- ✅ Prevent accidental horizontal scroll -->
   <body class="bg-gray-100 font-sans overflow-x-hidden">
     <!-- ✅ Responsive Header -->
-  <header class="w-full bg-green-100 py-6 shadow-md">
-    <div class="max-w-6xl mx-auto px-4 flex items-center justify-between">
-      <h1 class="text-3xl font-bold text-green-700 cursor-pointer" onclick="window.location.href='/EcoKart'">EcoKart</h1>
-      <nav>
-        <img
-        onclick="scrollToBottom()"
-          src="/images/person.png"
-          alt="About"
-          class="w-10 h-10 rounded mx-3 inline-block cursor-pointer"
-        />
-        <!--toggle hidden-->
-        <img
-          src="/images/cart.png"
-          alt="Cart"
-          class="w-10 h-10 rounded mx-3 inline-block cursor-pointer"
-          onclick="window.location.href='/EcoKart/cart'"
-        />
-        <!--toggle hidden-->
-        <img
-          src="/images/user.png"
-          alt="Profile"
-          class="w-10 h-10 rounded mx-3 inline-block cursor-pointer"
-          onclick="window.location.href='/EcoKart/profile' "
-        />
-        <!--toggle hidden-->
-        <a href="/login" class="text-red-700 font-medium mx-2 hidden">Login</a>
-        <!--toggle hidden-->
-      </nav>
-    </div>
-  </header>
+    <header class="w-full bg-green-100 py-6 shadow-md">
+      <div class="max-w-6xl mx-auto px-4 flex items-center justify-between">
+        <h1 onclick="window.location='/EcoKart/home'" class="text-3xl font-bold text-green-700 cursor-pointer">
+          EcoKart
+        </h1>
+        <nav>
+          <img
+          onclick="scrollToBottom()"
+            src="/images/person.png"
+            alt="About"
+            class="w-10 h-10 rounded mx-3 inline-block cursor-pointer"
+          />
+          <!--toggle hidden-->
+          <img
+            src="/images/cart.png"
+            alt="Cart"
+            class="w-10 h-10 rounded mx-3 inline-block cursor-pointer"
+            onclick="window.location.href='/EcoKart/cart'"
+          />
+          <!--toggle hidden-->
+          <img
+            src="/images/user.png"
+            alt="Profile"
+            class="hidden w-10 h-10 rounded mx-3 cursor-pointer"
+            onclick="window.location='/EcoKart/profile'"
+            id="profile"
+          />
+          <!--toggle hidden-->
+          <a id="login" onclick="window.location.href='/EcoKart'" class="text-red-700 font-medium mx-2 cursor-pointer inline-block hover:border-b-3 hover:border-red-700"
+            >Login</a
+          >
+          <!--toggle hidden-->
+        </nav>
+      </div>
+    </header>
 
     <!-- ✅ Main Cart Section -->
     <div class="w-full bg-white lg:p-8 sm:p-8 rounded shadow">

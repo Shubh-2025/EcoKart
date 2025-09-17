@@ -21,8 +21,12 @@ app.use(express.urlencoded({ extended: true }));
 //serving the html pages with js and css
 app.use(express.static(path.join(__dirname, "public")));
 
-// landing page servering
+// login and register page servering
 app.get("/EcoKart", (req, res) => {
+    res.sendFile(path.join(__dirname, "pages", "loginandregister.html"));
+});
+// landing page servering
+app.get("/EcoKart/home", (req, res) => {
     res.sendFile(path.join(__dirname, "pages", "landing.html"));
 });
 // product page serving
@@ -56,7 +60,27 @@ app.get("/EcoKart/data", async (req, res) => {
         console.log(error);
     }
 });
-
+// api routes exposed to the frontend.
+// login data (login page)
+app.post("/EcoKart/login", async (req, res) => {
+    try {
+        let {email,pass} = req.body
+        let response = await pool.query("select id,email,password from users where email = $1",[email]);
+        if (response.rows.length > 0) {
+            if(response.rows[0].email===email && response.rows[0].password===pass){
+            // console.log(response.rows[0].id);
+            res.status(200).json({ message: response.rows[0].id});
+            } else {
+                res.status(401).json({message:"unauthorised"});
+            }
+        } else {
+            res.status(400).json({ message: "login uncessessful" });
+        }
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error" });
+        console.log(error);
+    }
+});
 // api routes exposed to the frontend.
 // sending data for individual product(s).
 app.get("/EcoKart/productdata/:id", async (req, res) => {

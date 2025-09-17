@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="icon" href="/images/logo.png" />
+    <title>EcoKart - auth</title>
+</head>
+<body class="min-h-screen w-full bg-gray-100 flex flex-col items-center justify-center min-h-screen bg-[url('https://t3.ftcdn.net/jpg/03/55/60/70/360_F_355607062_zYMS8jaz4SfoykpWz5oViRVKL32IabTP.jpg')]">
+
+    <h1 class="text-black/60 font-bold text-5xl p-5 bg-no-repeat  bg-center">EcoKart</h1>
+    <div class="bg-transparent backdrop-blur-xs shadow-lg rounded-lg w-full max-w-md p-8">
+        <div class="flex justify-center mb-6">
+            <button id="loginTab" class="px-4 py-2 font-semibold text-gray-700 border-b-2 border-blue-500 focus:outline-none">Login</button>
+            <button id="registerTab" class="px-4 py-2 font-semibold text-gray-700 border-b-2 border-transparent focus:outline-none">Register</button>
+        </div>
+        <!-- Login Form -->
+        <form id="loginForm" class="space-y-4">
+            <div>
+                <label class="block text-gray-700">Email</label>
+                <input id="loginemail" type="email" class="w-full px-3 py-2 border rounded focus:outline-none focus:ring" required>
+            </div>
+            <div>
+                <label class="block text-gray-700">Password</label>
+                <input id="loginpassword" type="password" class="w-full px-3 py-2 border rounded focus:outline-none focus:ring" required>
+            </div>
+            <button type="submit" class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600">Login</button>
+        </form>
+        <!-- Register Form -->
+        <form id="registerForm" class="space-y-4 hidden">
+            <div>
+                <label class="block text-gray-700">Name</label>
+                <input type="text" class="w-full px-3 py-2 border rounded focus:outline-none focus:ring" required>
+            </div>
+            <div>
+                <label class="block text-gray-700">Email</label>
+                <input type="email" class="w-full px-3 py-2 border rounded focus:outline-none focus:ring" required>
+            </div>
+            <div>
+                <label class="block text-gray-700">Password</label>
+                <input type="password" class="w-full px-3 py-2 border rounded focus:outline-none focus:ring" required>
+            </div>
+            <button type="submit" class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600">Register</button>
+        </form>
+    </div>
+    <script src="/scripts/loginandregister.js"></script>
+</body>
+</html>

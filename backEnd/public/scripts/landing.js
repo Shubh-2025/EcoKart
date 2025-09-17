@@ -1,4 +1,6 @@
 const container = document.getElementById("itemContainer"); // the data holder
+const login = document.getElementById('login')
+const profile = document.getElementById('profile');
 
 function scrollToBottom() {
   window.scrollTo({
@@ -6,6 +8,20 @@ function scrollToBottom() {
     behavior: "smooth" // makes the scroll smooth
   });
 }
+
+(function isloggedin(){
+  if(localStorage.getItem("token")){
+    login.classList.remove("inline-block");
+    login.classList.add("hidden");
+    profile.classList.remove("hidden");
+    profile.classList.add("inline-block");
+  } else {
+    profile.classList.remove("inline-block");
+    profile.classList.add("hidden");
+    login.classList.remove("hidden");
+    login.classList.add("inline-block");    
+  }
+})()
 
 async function getItems() {
   try {
