@@ -14,68 +14,83 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(cors());
-app.set("static routing",true);
+app.set("static routing", true);
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 
 //serving the html pages with js and css
-app.use(express.static(path.join(__dirname,"public")));
+app.use(express.static(path.join(__dirname, "public")));
 
 // landing page servering
-app.get("/EcoKart",( req , res ) =>{
-    res.sendFile(path.join(__dirname,"pages","landing.html"));
+app.get("/EcoKart", (req, res) => {
+    res.sendFile(path.join(__dirname, "pages", "landing.html"));
 });
 // product page serving
-app.get("/EcoKart/product",( req , res ) =>{
-    res.sendFile(path.join(__dirname,"pages","product.html"));
+app.get("/EcoKart/product", (req, res) => {
+    res.sendFile(path.join(__dirname, "pages", "product.html"));
 });
 // cart page serving
-app.get("/EcoKart/cart",( req , res ) =>{
-    res.sendFile(path.join(__dirname,"pages","cart.html"));
+app.get("/EcoKart/cart", (req, res) => {
+    res.sendFile(path.join(__dirname, "pages", "cart.html"));
 });
 // profile page serving
-app.get("/EcoKart/profile",( req , res ) =>{
-    res.sendFile(path.join(__dirname,"pages","profile.html"));
+app.get("/EcoKart/profile", (req, res) => {
+    res.sendFile(path.join(__dirname, "pages", "profile.html"));
 });
 
 // -----------------------------------------------------------------------------------------------------------------
 
 // api routes exposed to the frontend.
-// landing items sending
-app.get("/EcoKart/data",async( req,res )=>{
-try {
-    let response = await pool.query("select * from product");
-    if(response.rows.length > 0){
-        // console.log(response.rows);
-        res.status(200).json({message:response.rows});
-    } else {
-        res.status(400).json({message:" no data found"})
+// sending items data (landing page)
+app.get("/EcoKart/data", async (req, res) => {
+    try {
+        let response = await pool.query("select * from product");
+        if (response.rows.length > 0) {
+            // console.log(response.rows);
+            res.status(200).json({ message: response.rows });
+        } else {
+            res.status(400).json({ message: " no data found" })
+        }
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error" })
+        console.log(error);
     }
-} catch (error) {
-    res.status(500).json({message:"Internal server error"})
-    console.log(error);
-}
 });
 
 // api routes exposed to the frontend.
-// loading product(s).
-app.get("/EcoKart/productdata/:id",async( req,res )=>{
-try {
-    const id = req.params.id;
-    let response = await pool.query("select * from product where id = $1",[id]);
-    if(response.rows.length > 0){
-        // console.log(response.rows);
-        res.status(200).json({message:response.rows});
-    } else {
-        res.status(400).json({message:" no data found"})
+// sending data for individual product(s).
+app.get("/EcoKart/productdata/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
+        let response = await pool.query("select * from product where id = $1", [id]);
+        if (response.rows.length > 0) {
+            // console.log(response.rows);
+            res.status(200).json({ message: response.rows });
+        } else {
+            res.status(400).json({ message: " no data found" })
+        }
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error" })
+        console.log(error);
     }
-} catch (error) {
-    res.status(500).json({message:"Internal server error"})
-    console.log(error);
-}
 });
-
-
+// api routes exposed to the frontend.
+// sending users data (for profile page).
+app.get("/EcoKart/Users/:uid", async (req, res) => {
+    try {
+        const uid = req.params.uid;
+        let response = await pool.query("select name,email,address,phone from users where id = $1", [uid]);
+        if (response.rows.length > 0) {
+            // console.log(response.rows);
+            res.status(200).json({ message: response.rows });
+        } else {
+            res.status(400).json({ message: " no user found" })
+        }
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error" })
+        console.log(error);
+    }
+})
 
 
 
@@ -83,9 +98,9 @@ try {
 try {
     const connection = await pool.connect(); // first connect and test
     connection.release(); // then close the connection if everything is ok...
-    app.listen(PORT,()=> {
-    console.log(`DataBase connected \nApp is Listening on Port ${PORT} \napp is running....`);
-});
+    app.listen(PORT, () => {
+        console.log(`DataBase connected \nApp is Listening on Port ${PORT} \napp is running....`);
+    });
 } catch (error) {
     console.log("DataBase connection failed...");
 }
