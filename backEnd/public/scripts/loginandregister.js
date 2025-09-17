@@ -48,8 +48,8 @@ registerForm.addEventListener('submit',(e)=>{
 loginTab.onclick = () => {
     loginForm.classList.remove('hidden');
     registerForm.classList.add('hidden');
-    loginTab.classList.add('border-blue-500');
-    registerTab.classList.remove('border-blue-500');
+    loginTab.classList.add('border-green-500');
+    registerTab.classList.remove('border-green-500');
     registerTab.classList.add('border-transparent');
     loginTab.classList.remove('border-transparent');
 };
@@ -57,8 +57,8 @@ loginTab.onclick = () => {
 registerTab.onclick = () => {
     registerForm.classList.remove('hidden');
     loginForm.classList.add('hidden');
-    registerTab.classList.add('border-blue-500');
-    loginTab.classList.remove('border-blue-500');
+    registerTab.classList.add('border-green-500');
+    loginTab.classList.remove('border-green-500');
     loginTab.classList.add('border-transparent');
     registerTab.classList.remove('border-transparent');
 };

@@ -46,5 +46,5 @@ function logoutUser(){ // logout handler
         alert('are you sure you want to logout?');
         localStorage.removeItem('token');
         localStorage.removeItem('cart');
-        window.location.href = '/EcoKart';
+        window.location.href = '/EcoKart/home';
 }
