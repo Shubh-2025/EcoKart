@@ -21,7 +21,7 @@ loginForm.addEventListener('submit', async(e)=>{
     } else {
     try {
         let data={email:loginemail.value,pass:loginpassword.value}
-        let response = await fetch("http://localhost:4000/EcoKart/login", {
+        let response = await fetch("https://ecokart-app.onrender.com/EcoKart/login", {
         method: "POST",
         headers: {
         "Content-Type": "application/json",
@@ -71,7 +71,7 @@ registerForm.addEventListener('submit',async(e)=>{
                         try {
                             let data={name:registername.value,email:registeremail.value,pass:registerpassword.value,
                                 phone:registerphone.value,address:registeraddress.value};
-                            let response = await fetch("http://localhost:4000/Ecokart/register",{
+                            let response = await fetch("https://ecokart-app.onrender.com/Ecokart/register",{
                             method: "POST",
                             headers: {
                             "Content-Type": "application/json",

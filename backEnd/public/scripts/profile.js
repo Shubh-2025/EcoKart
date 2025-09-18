@@ -26,7 +26,7 @@ async function fetchUserData(){
     try {
         const uid = localStorage.getItem("token");
         // localStorage.setItem('token',JSON.stringify(4)) - we need to do the same when login is done.
-        const response = await fetch(`http://localhost:4000/EcoKart/Users/${uid}`);
+        const response = await fetch(`https://ecokart-app.onrender.com/EcoKart/Users/${uid}`);
         if(!response.ok){
             window.location.href='/EcoKart';
         } else {

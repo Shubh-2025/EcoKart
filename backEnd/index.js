@@ -24,23 +24,23 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // login and register page servering
 app.get("/EcoKart", (req, res) => {
-    res.sendFile(path.join(__dirname, "pages", "loginandregister.html"));
+    res.sendFile(path.join(__dirname, "Pages", "loginandregister.html"));
 });
 // landing page servering
 app.get("/EcoKart/home", (req, res) => {
-    res.sendFile(path.join(__dirname, "pages", "landing.html"));
+    res.sendFile(path.join(__dirname, "Pages", "landing.html"));
 });
 // product page serving
 app.get("/EcoKart/product", (req, res) => {
-    res.sendFile(path.join(__dirname, "pages", "product.html"));
+    res.sendFile(path.join(__dirname, "Pages", "product.html"));
 });
 // cart page serving
 app.get("/EcoKart/cart", (req, res) => {
-    res.sendFile(path.join(__dirname, "pages", "cart.html"));
+    res.sendFile(path.join(__dirname, "Pages", "cart.html"));
 });
 // profile page serving
 app.get("/EcoKart/profile", (req, res) => {
-    res.sendFile(path.join(__dirname, "pages", "profile.html"));
+    res.sendFile(path.join(__dirname, "Pages", "profile.html"));
 });
 
 // -----------------------------------------------------------------------------------------------------------------
