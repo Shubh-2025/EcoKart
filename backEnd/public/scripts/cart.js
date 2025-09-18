@@ -5,6 +5,8 @@ const couponmessage = document.getElementById('coupon-message');
 let coupon = document.querySelector("#coupon");
 let cart = [];
 const details = document.querySelector("#Details");
+const checkoutbtn = document.getElementById("checkout-btn");
+let form = document.getElementById('deliveryform');
 
 (function authenticateUser() { // check if there a authenticated token or not
   if (!localStorage.getItem('token')) {
@@ -87,7 +89,6 @@ function bringCartData() {
     cart = JSON.parse(cartData);
   }
   // console.log(cart);
-
   renderCart();
 }
 // invoking
@@ -101,6 +102,10 @@ function renderCart() {
     tbody.innerHTML =
       '<tr><td colspan="5" class="text-center py-6 text-gray-500">Your cart is empty.</td></tr>';
     document.getElementById("checkout-btn").disabled = true;
+    details.classList.remove("block");
+    details.classList.add("hidden");
+    coupon.value = "";
+    couponmessage.textContent = '';
   } else {
     cart.forEach((item, index) => {
       const subtotal = item.qty * item.price;
@@ -142,18 +147,33 @@ function removeItem(index) {
 function clearCart() {
   localStorage.setItem("cart", JSON.stringify([]));
   coupon.value = "";
+  couponmessage.textContent = '';
+  details.classList.remove("block");
+  details.classList.add("hidden");
+  checkoutbtn.textContent = 'Checkout';
 
   bringCartData();
   renderCart();
 }
 
+function payout(){
+    localStorage.setItem("cart", JSON.stringify([]));
+    alert("Thank you for your purchase!\nYour order has been placed successfully.\n Total : ₹" + totalcount.textContent);
+    bringCartData();
+    checkoutbtn.removeEventListener('click',payout);
+    checkoutbtn.addEventListener('click',checkout);
+    details.classList.remove("block");
+    details.classList.add("hidden");
+    coupon.value = "";
+    couponmessage.textContent = '';
+};
+
 function checkout() {
-  // localStorage.setItem("cart", JSON.stringify([]));
-
-  // alert("Thank you for your purchase!\nYour order has been placed successfully.\n Total : ₹" + totalcount.textContent);
-  // bringCartData();
-
-  details.classList.remove("hidden").add("block"); // work pending...
+  details.classList.remove("hidden");
+  details.classList.add("block"); // work pending...
+  checkoutbtn.textContent = 'Place Order';
+  checkoutbtn.removeEventListener("click", checkout);
+  checkoutbtn.addEventListener("click", payout);
 }
 
 // Initial render

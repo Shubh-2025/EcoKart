@@ -65,57 +65,34 @@
         </tbody>
       </table>
     </div>
-    <!-- ✅ Buttons and Total - Stacked for small screens -->
-    <div class=" p-4 flex flex-col sm:flex-row justify-end items-center gap-4 sm:gap-6 flex-wrap">
-      <div class=" w-full sm:w-auto flex justify-around sm:justify-start sm:text-lg font-medium">
-        <label for="coupon" id="coupon-message" class="text-green-700"></label>
-        <input type="text" name="coupon" id="coupon" placeholder="Apply coupon"
-          class="w-40 px-2 mx-2 py-1 border rounded outline-none focus:ring-2 focus:ring-green-400">
-        <h2 class="font-bold text-green-800 sm:ml-4 lg:ml-4">
-          Total: ₹<span id="cart-total">0.00</span>
-        </h2>
-      </div>
-      <div class="flex gap-2">
-        <button
-          class="clear-btn bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded transition disabled:bg-gray-300"
-          onclick="clearCart()">
-          Clear Cart
-        </button>
-        <button onclick="checkout()" id="checkout-btn"
-          class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded transition disabled:bg-gray-300" disabled>
-          Checkout
-        </button>
-      </div>
-    </div>
-
-    <!-- ✅ Address, Shipping & Order Status Section -->
+        <!-- ✅ Address, Shipping & Order Status Section -->
     <div id="Details" class="w-full mx-auto my-8 bg-white rounded border-t-2 shadow p-6 hidden"> <!-- after pressing the checkout thid should pop up -->
       <h3 class="text-xl font-semibold mb-4 text-green-700">Delivery Details</h3>
-      <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <form class="grid grid-cols-1 md:grid-cols-2 gap-6" id="deliveryform">
         <div>
           <label for="address" class="block text-sm font-medium mb-1">Address</label>
-          <textarea id="address" name="address" rows="3"
-            class="w-full border rounded px-3 py-2 focus:ring-2 focus:ring-green-400"
+          <textarea id="address" name="address" rows="2" required
+            class="w-full border rounded px-3 py-2 focus:ring-2 resize-none focus:ring-green-400"
             placeholder="Enter your delivery address"></textarea>
         </div>
         <div>
           <label for="city" class="block text-sm font-medium mb-1">City</label>
-          <input type="text" id="city" name="city"
+          <input type="text" id="city" name="city" required
             class="w-full border rounded px-3 py-2 focus:ring-2 focus:ring-green-400" placeholder="City">
         </div>
         <div>
           <label for="state" class="block text-sm font-medium mb-1">State</label>
-          <input type="text" id="state" name="state"
+          <input type="text" id="state" name="state" required
             class="w-full border rounded px-3 py-2 focus:ring-2 focus:ring-green-400" placeholder="State">
         </div>
         <div>
           <label for="zip" class="block text-sm font-medium mb-1">ZIP Code</label>
-          <input type="text" id="zip" name="zip"
+          <input type="text" id="zip" name="zip" required
             class="w-full border rounded px-3 py-2 focus:ring-2 focus:ring-green-400" placeholder="ZIP Code">
         </div>
         <div>
           <label for="phone" class="block text-sm font-medium mb-1">Phone Number</label>
-          <input type="tel" id="phone" name="phone"
+          <input type="tel" id="phone" name="phone" required
             class="w-full border rounded px-3 py-2 focus:ring-2 focus:ring-green-400" placeholder="Phone Number">
         </div>
         <div>
@@ -141,12 +118,35 @@
             <option class="bg-green-50 rounded" value="netbanking">Net Banking</option>
           </select>
         </div>
-        <div>
-          <label for="order-message" class="block text-sm font-medium mb-1">Add Ntes</label>
+        <div class="m-2">
+          <label for="order-message" class="block text-sm font-medium mb-1">Notes</label>
           <textarea id="order-message" name="order-message" rows="2"
-            class="w-full border rounded px-3 py-2 focus:ring-2 focus:ring-green-400"
+            class="w-full border rounded px-3 py-2 focus:ring-2 resize-none focus:ring-green-400"
             placeholder="Add a note for your order (optional)"></textarea>
         </div>
+      </div>
+    </div>
+
+    <!-- ✅ Buttons and Total - Stacked for small screens -->
+    <div class=" p-4 flex flex-col sm:flex-row justify-end items-center gap-4 sm:gap-6 flex-wrap">
+      <div class=" w-full sm:w-auto flex justify-around sm:justify-start sm:text-lg font-medium">
+        <label for="coupon" id="coupon-message" class="text-green-700"></label>
+        <input type="text" name="coupon" id="coupon" placeholder="Apply coupon"
+          class="w-40 px-2 mx-2 py-1 border rounded outline-none focus:ring-2 focus:ring-green-400">
+        <h2 class="font-bold text-green-800 sm:ml-4 lg:ml-4">
+          Total: ₹<span id="cart-total">0.00</span>
+        </h2>
+      </div>
+      <div class="flex gap-2">
+        <button
+          class="clear-btn bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded transition disabled:bg-gray-300"
+          onclick="clearCart()">
+          Clear Cart
+        </button>
+        <button onclick="checkout()" id="checkout-btn"
+          class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded transition disabled:bg-gray-300" disabled>
+          Checkout
+        </button>
       </div>
     </div>
   </div>

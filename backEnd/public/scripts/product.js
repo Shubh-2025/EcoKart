@@ -115,6 +115,12 @@ try {
       button.type = 'submit';
       button.className = 'bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded transition cursor-pointer';
       button.textContent = 'Add to Cart';
+      if(!localStorage.getItem('token')){
+        button.disabled=true;
+        button.title='login first';
+        button.classList.remove('bg-green-600','hover:bg-green-700');
+        button.classList.add('bg-gray-400');
+      } 
 
       form.append(label, input, button);
 
