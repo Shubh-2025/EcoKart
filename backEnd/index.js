@@ -4,10 +4,12 @@ import pool from "./db.js";
 import { fileURLToPath } from "url";
 import path from "path";
 // dotenv import
+import dotenv from dotenv;
 // dotenv config
-const PORT = 4000;
+dotenv.config();
 
-// 
+const PORT = process.env.PORT || 4000;
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
