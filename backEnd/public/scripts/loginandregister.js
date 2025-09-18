@@ -20,7 +20,7 @@ loginForm.addEventListener('submit', async(e)=>{
         return
     } else {
     try {
-        data={email:loginemail.value,pass:loginpassword.value}
+        let data={email:loginemail.value,pass:loginpassword.value}
         let response = await fetch("http://localhost:4000/EcoKart/login", {
         method: "POST",
         headers: {
@@ -69,7 +69,7 @@ registerForm.addEventListener('submit',async(e)=>{
                         return;
                     } else {
                         try {
-                            data={name:registername.value,email:registeremail.value,pass:registerpassword.value,
+                            let data={name:registername.value,email:registeremail.value,pass:registerpassword.value,
                                 phone:registerphone.value,address:registeraddress.value};
                             let response = await fetch("http://localhost:4000/Ecokart/register",{
                             method: "POST",
