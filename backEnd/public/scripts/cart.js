@@ -4,6 +4,7 @@ const coupons = ["FAB20", "FAB30", "FAB40", "FAB50"];
 const couponmessage = document.getElementById('coupon-message');
 let coupon = document.querySelector("#coupon");
 let cart = [];
+const details = document.querySelector("#Details");
 
 (function authenticateUser() { // check if there a authenticated token or not
   if (!localStorage.getItem('token')) {
@@ -147,10 +148,12 @@ function clearCart() {
 }
 
 function checkout() {
-  localStorage.setItem("cart", JSON.stringify([]));
+  // localStorage.setItem("cart", JSON.stringify([]));
 
-  alert("Thank you for your purchase!\nYour order has been placed successfully.\n Total : ₹" + totalcount.textContent);
-  bringCartData();
+  // alert("Thank you for your purchase!\nYour order has been placed successfully.\n Total : ₹" + totalcount.textContent);
+  // bringCartData();
+
+  details.classList.remove("hidden").add("block"); // work pending...
 }
 
 // Initial render

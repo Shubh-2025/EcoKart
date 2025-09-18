@@ -3,7 +3,6 @@ import cors from "cors";
 import pool from "./db.js";
 import { fileURLToPath } from "url";
 import path from "path";
-import { log } from "console";
 // dotenv import
 // dotenv config
 const PORT = 4000;
