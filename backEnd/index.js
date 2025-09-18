@@ -63,23 +63,46 @@ app.get("/EcoKart/data", async (req, res) => {
 // login data (login page)
 app.post("/EcoKart/login", async (req, res) => {
     try {
-        let {email,pass} = req.body
+        let {email,pass} = req.body;
         let response = await pool.query("select id,email,password from users where email = $1",[email]);
         if (response.rows.length > 0) {
             if(response.rows[0].email===email && response.rows[0].password===pass){
             // console.log(response.rows[0].id);
             res.status(200).json({ message: response.rows[0].id});
             } else {
-                res.status(401).json({message:"unauthorised"});
+                res.status(403).json({message:"unauthorised"});
             }
         } else {
-            res.status(400).json({ message: "login uncessessful" });
+            res.status(401).json({ message: "login uncessessful" });
         }
     } catch (error) {
-        res.status(500).json({ message: "Internal server error" });
+        res.status(500).json({ message: "Internal Server Error"});
         console.log(error);
     }
 });
+
+// api routes exposed to the frontend.
+// register data (register page)
+app.post("/EcoKart/register", async (req, res) => {
+    try {
+        const {name,email,pass,phone,address} = req.body;
+        let test = await pool.query("select id from users where email = $1",[email]);
+        if(test.rows.length>0){
+            res.status(400).json({message:" This email is already Registered"});
+            return;
+        }
+        let response = await pool.query("insert into users(name,email,password,phone,address) values($1,$2,$3,$4,$5)returning id;",[name,email,pass,phone,address]);
+        if(response.rows.length>0){
+            res.status(201).json({id:response.rows[0].id});
+        }  else {
+            res.status(401).json({message:"Regiteration Unsuccessful"});
+        }
+    } catch (error) {
+        res.status(500).json({message:"Internal Server Error"})
+        console.log(error);
+    }
+});
+
 // api routes exposed to the frontend.
 // sending data for individual product(s).
 app.get("/EcoKart/productdata/:id", async (req, res) => {
