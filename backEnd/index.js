@@ -28,7 +28,7 @@ app.get("/EcoKart", (req, res) => {
 });
 // landing page servering
 app.get("/EcoKart/home", (req, res) => {
-    res.sendFile(path.join(__dirname, "Pages", "landing.html"));
+    res.sendFile(path.join(__dirname, "Pages", "Landing.html"));
 });
 // product page serving
 app.get("/EcoKart/product", (req, res) => {
@@ -40,7 +40,7 @@ app.get("/EcoKart/cart", (req, res) => {
 });
 // profile page serving
 app.get("/EcoKart/profile", (req, res) => {
-    res.sendFile(path.join(__dirname, "Pages", "profile.html"));
+    res.sendFile(path.join(__dirname, "Pages", "Profile.html"));
 });
 
 // -----------------------------------------------------------------------------------------------------------------
