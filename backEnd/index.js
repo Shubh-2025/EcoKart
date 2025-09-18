@@ -4,7 +4,7 @@ import pool from "./db.js";
 import { fileURLToPath } from "url";
 import path from "path";
 // dotenv import
-import dotenv from dotenv;
+import dotenv from "dotenv";
 // dotenv config
 dotenv.config();
 
