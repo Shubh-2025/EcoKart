@@ -51,7 +51,7 @@ app.get("/EcoKart/data", async (req, res) => {
     try {
         let response = await pool.query("select * from product");
         if (response.rows.length > 0) {
-            // console.log(response.rows);
+            console.log(response.rows);
             res.status(200).json({ message: response.rows });
         } else {
             res.status(400).json({ message: " no data found" })

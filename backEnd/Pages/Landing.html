@@ -11,9 +11,9 @@
 </head>
 
 <body class="w-full h-full bg-green-50 outline-none">
-  <header class="w-full bg-green-100 py-6 shadow-md">
+  <header class="w-full bg-green-200 py-6">
     <div class="max-w-6xl mx-auto px-4 flex items-center justify-between">
-      <h1 class="text-3xl font-bold text-green-700 cursor-pointer">
+      <h1 class="text-3xl font-bold text-green-700 cursor-pointer" title="Home">
         EcoKart
       </h1>
       <nav class="flex gap-6">
@@ -23,10 +23,9 @@
           onclick="window.location.href='/EcoKart/cart'" />
         <img src="/images/user.png" alt="Profile" class="hidden w-10 h-10 rounded mx-3 cursor-pointer"
           onclick="window.location='/EcoKart/profile'" id="profile" /> -->
-          <title for="">About Us</title>
-          <i class="fa fa-3x fa-info text-green-700 cursor-pointer" onclick="scrollToBottom()"></i>
-          <i class="fa fa-3x fa-shopping-cart text-green-700 cursor-pointer" onclick="window.location.href='/EcoKart/cart'"></i>
-          <i class="fa fa-3x fa-user text-green-700 cursor-pointer" onclick="window.location='/EcoKart/profile'"></i>
+          <i class="fa fa-3x fa-info text-green-700 cursor-pointer border-b-3 p-2 border-transparent rounded ease-in-out duration-500 hover:border-green-600 " title="About Us" onclick="scrollToBottom()"></i>
+          <i class="fa fa-3x fa-shopping-cart text-green-700 cursor-pointer border-b-3 p-2 border-transparent rounded ease-in-out duration-500 hover:border-green-600 " title="Cart" onclick="window.location.href='/EcoKart/cart'"></i>
+          <i class="fa fa-3x fa-user text-green-700 cursor-pointer border-b-3 p-2 border-transparent rounded ease-in-out duration-500 hover:border-green-600 " title="Profile" onclick="window.location='/EcoKart/profile'"></i>
         <!--toggle hidden-->
         <a id="login" onclick="window.location.href='/EcoKart'"
           class="text-red-700 font-medium mx-2 cursor-pointer inline-block hover:border-b-3 hover:border-red-700">Login</a>
@@ -35,30 +34,28 @@
     </div>
   </header>
 
-  <section class="relative bg-green-100 h-[70vh] gap-3">
-    <img alt="Backgrouund image"
-      src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80"
-      class="absolute inset-0 w-full h-full object-cover" />
-    
-    <div class="flex items-center">
-      <div class="absolute left-1/3 top-1/2 transform rotate-[-5deg] z-5 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105 hover:z-10">
+  <section class="relative bg-green-200 h-[70vh] gap-3 flex flex-col justify-center">
+    <div
+      class="absolute bg-green-200 w-full h-full " >
+    </div>
+    <div class="flex items-center max-w-[90vw]">
+      <div class=" h-[55%] absolute left-[10%] top-[30%] md:left-[33%] transform rotate-[-5deg] z-5 cursor-pointer transition-transform duration-900 ease-in hover:scale-105 hover:z-10">
           <div class="bg-green-700/90 rounded-xl shadow-2xl p-8 w-[340px]  sm:w-[420px] flex flex-col items-center">
-            <img id="card1" alt="card" class="z-0 absolute inset-0 w-full h-full mb-4 rounded shadow-lg" />
-            <h3 id="card1h3" class="text-white text-2xl font-bold mb-2 z-1"></h3>
+            <img src="https://th.bing.com/th/id/R.05055912173b0bb997de7ec31b6ad70b?rik=1COy7nkh5Da8NQ&riu=http%3a%2f%2fplanetgoodwill.com%2fwp-content%2fuploads%2f2018%2f12%2f911ZrDKR7CL._SL1500_.jpg&ehk=6W38b8igaXzO0paarbkW4crB%2bpf1SAzUejv%2f6wOqC9s%3d&risl=&pid=ImgRaw&r=0" id="card1" alt="card" class="z-0 absolute inset-0 w-full h-full mb-4 rounded shadow-lg object-cover" />
+            <h3 id="card1h3" class="text-white text-2xl font-bold mb-2 z-1">Water Bottle</h3>
             <p id="card1p" class="text-white/80 text-base mb-4 text-center z-1">
-
             </p>
             <button class="z-1 bg-white text-green-700 font-semibold px-6 py-2 rounded-full shadow hover:bg-green-200 transition">
               Shop Now
             </button>
           </div>
         </div>
-      <div class="absolute left-1/3 top-1/3 transform rotate-[5deg] z-5 cursor-pointer transition-transform duration-300 hover:scale-105 hover:z-10">
+      <div class="absolute left-[10%] top-[30%] md:left-[37%] transform rotate-[5deg] z-5 cursor-pointer transition-transform duration-900 hover:scale-105 hover:z-10">
           <div class="bg-green-700/90 rounded-xl shadow-2xl p-8 w-[340px] sm:w-[420px] flex flex-col items-center">
-            <img id="card2" alt="card" class="z-0 absolute inset-0 w-full h-full mb-4 rounded shadow-lg" />
-            <h3 id="card2h3" class="text-white text-2xl font-bold mb-2 z-1"></h3>
+            <img src="https://kutis-skincare.co.uk/cdn/shop/files/ceaderwood_rosevegandeodorant.jpg?v=1716477932" id="card2" alt="card" class="z-0 absolute inset-0 w-full h-full mb-4 rounded shadow-lg object-cover" />
+            <h3 id="card2h3" class="text-white text-2xl font-bold mb-2 z-1">Tooth brush</h3>
             <p id="card2p" class="text-white/80 text-base mb-4 text-center z-1">
-              
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, voluptates! Porro culpa magnam saepe, ratione quibusdam adipisci accusantium molestiae totam tenetur nisi non laboriosam illum dicta libero facere voluptatem minus!
             </p>
             <button class="z-1 bg-white text-green-700 font-semibold px-6 py-2 rounded-full shadow hover:bg-green-200 transition">
               Shop Now
@@ -67,11 +64,11 @@
         </div>
     </div>
 
-    <div class="text-white/85 relative w-full h-full text-center z-4 rounded p-8 backdrop-blur-xs" >
-      <h2 class=" w-full text-4xl mx-2 font-extrabold mb-4">
+    <div class="text-gray-700 relative w-full h-full text-center z-4 rounded p-8" >
+      <h2 class=" w-full text-4xl mx-2 font-bolder mb-4">
         Shop Eco-Friendly. Live Healthy.
       </h2>
-      <p class="text-white text-xl mx-8 mb-8">
+      <p class="text-gray-700 text-xl mx-8 mb-8">
         Discover a curated selection of sustainable products for a greener
         tomorrow.
       </p>
@@ -85,27 +82,27 @@
 
     <div class="flex justify-start space-x-4 mb-4 overflow-x-auto p-4">
       <button
-        class="inline-block text-white bg-green-500 px-6 py-3 mb-8 rounded-full font-semibold hover:bg-green-400 transition cursor-pointer shadow-xl">
+        class="inline-block text-white bg-green-500 px-6 py-3 mb-8 rounded-2xl font-semibold hover:bg-green-400 transition cursor-pointer shadow-xl">
         <i class="fa fa-filter fa-x"></i>
         Filters
       </button>
       <button
-        class="inline-block border text-green-500 px-6 py-3 mb-8 rounded-full font-semibold hover:bg-green-500 hover:text-white transition cursor-pointer shadow-xl">
+        class="inline-block border text-green-500 px-6 py-3 mb-8 rounded-2xl font-semibold hover:bg-green-500 hover:text-white transition cursor-pointer shadow-xl">
         <i class="fa fa-star fa-x"></i>
         Premium
       </button>
       <button
-        class="inline-block border text-green-500 px-6 py-3 mb-8 rounded-full font-semibold hover:bg-green-500 hover:text-white transition cursor-pointer shadow-xl">
+        class="inline-block border text-green-500 px-6 py-3 mb-8 rounded-2xl font-semibold hover:bg-green-500 hover:text-white transition cursor-pointer shadow-xl">
         <i class="fa fa-magic fa-x"></i>
         Greatest Deals
       </button>
       <button
-        class="inline-block border text-green-500 px-6 py-3 mb-8 rounded-full font-semibold hover:bg-green-500 hover:text-white transition cursor-pointer shadow-xl">
+        class="inline-block border text-green-500 px-6 py-3 mb-8 rounded-2xl font-semibold hover:bg-green-500 hover:text-white transition cursor-pointer shadow-xl">
         <i class="fa fa-hourglass fa-x"></i>
         Limited Time Offers
       </button>
       <button
-        class="inline-block border text-green-500 px-6 py-3 mb-8 rounded-full font-semibold hover:bg-green-500 hover:text-white transition cursor-pointer shadow-xl">
+        class="inline-block border text-green-500 px-6 py-3 mb-8 rounded-2xl font-semibold hover:bg-green-500 hover:text-white transition cursor-pointer shadow-xl">
         <i class="fa fa-clock-o fa-x"></i>
         Rush Deals
       </button>
@@ -116,7 +113,7 @@
     </div>
   </main>
 
-  <footer class="bg-green-100 text-green-900 mt-10" id="footer">
+  <footer class="bg-green-200 text-green-900 mt-10" id="footer">
     <div class="w-full px-4 py-10">
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
         <div>

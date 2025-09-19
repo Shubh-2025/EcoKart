@@ -37,10 +37,10 @@ async function getItems() {
     } else {
       data = await response.json();
       let itemarray = data.message;
-      // console.log(itemarray);
+      console.log(itemarray);
       // cards are displayed from here..
       let r = Math.floor(Math.random() * array.length);
-      card1.src=itemarray[r].imageurl;
+      // card1.src=itemarray[r].imageurl;
       card1h3.textContent=itemarray[r].name;
       card1p.textContent=itemarray[r].description;
       r = Math.floor(Math.random() * array.length);
