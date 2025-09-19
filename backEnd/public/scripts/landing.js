@@ -1,6 +1,12 @@
 const container = document.getElementById("itemContainer"); // the data holder
 const login = document.getElementById('login')
 const profile = document.getElementById('profile');
+const card1 = document.getElementById('card1');
+const card1h3 = document.getElementById('card1h3');
+const card1p = document.getElementById('card1p');
+const card2 = document.getElementById('card2');
+const card2h3 = document.getElementById('card2h3');
+const card2p = document.getElementById('card2p');
 
 function scrollToBottom() {
   window.scrollTo({
@@ -32,6 +38,16 @@ async function getItems() {
       data = await response.json();
       let itemarray = data.message;
       // console.log(itemarray);
+      // cards are displayed from here..
+      let r = Math.floor(Math.random() * array.length);
+      card1.src=itemarray[r].imageurl;
+      card1h3.textContent=itemarray[r].name;
+      card1p.textContent=itemarray[r].description;
+      r = Math.floor(Math.random() * array.length);
+      card2.src=itemarray[r].imageurl;
+      card2h3.textContent=itemarray[r].name;
+      card2p.textContent=itemarray[r].description;
+      
       for (let i of itemarray) {
         let div1 = document.createElement("div");
         div1.id = i.id;
