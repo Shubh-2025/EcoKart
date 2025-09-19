@@ -58,7 +58,7 @@ app.get("/EcoKart/data", async (req, res) => {
         }
     } catch (error) {
         res.status(500).json({ message: "Internal server error" })
-        console.log(error);
+        console.log(error.message);
     }
 });
 // api routes exposed to the frontend.
@@ -79,7 +79,7 @@ app.post("/EcoKart/login", async (req, res) => {
         }
     } catch (error) {
         res.status(500).json({ message: "Internal Server Error"});
-        console.log(error);
+        console.log(error.message);
     }
 });
 
@@ -101,7 +101,7 @@ app.post("/EcoKart/register", async (req, res) => {
         }
     } catch (error) {
         res.status(500).json({message:"Internal Server Error"})
-        console.log(error);
+        console.log(error.message);
     }
 });
 
@@ -119,7 +119,7 @@ app.get("/EcoKart/productdata/:id", async (req, res) => {
         }
     } catch (error) {
         res.status(500).json({ message: "Internal server error" })
-        console.log(error);
+        console.log(error.message);
     }
 });
 // api routes exposed to the frontend.
@@ -136,7 +136,7 @@ app.get("/EcoKart/Users/:uid", async (req, res) => {
         }
     } catch (error) {
         res.status(500).json({ message: "Internal server error" })
-        console.log(error);
+        console.log(error.message);
     }
 })
 
@@ -150,5 +150,5 @@ try {
         console.log(`DataBase connected \nApp is Listening on Port ${PORT} \napp is running....`);
     });
 } catch (error) {
-    console.log("DataBase connection failed...");
+    console.log(error.message,"\nDataBase connection failed...");
 }
