@@ -8,7 +8,7 @@ import dotenv from "dotenv";
 // dotenv config
 dotenv.config();
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -50,8 +50,9 @@ app.get("/EcoKart/profile", (req, res) => {
 app.get("/EcoKart/data", async (req, res) => {
     try {
         let response = await pool.query("select * from product");
+        // console.log(response);
         if (response.rows.length > 0) {
-            console.log(response.rows);
+            // console.log(response.rows); // ok
             res.status(200).json({ message: response.rows });
         } else {
             res.status(400).json({ message: " no data found" })

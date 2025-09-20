@@ -8,6 +8,23 @@ const card2 = document.getElementById('card2');
 const card2h3 = document.getElementById('card2h3');
 const card2p = document.getElementById('card2p');
 
+(function cards() {
+  const c1 = document.getElementById('one');
+  const c2 = document.getElementById('two');
+  let toggle = true;
+
+  setInterval(() => {
+    if (toggle) {
+      c1.classList.add('scale-105', 'z-10');
+      c2.classList.remove('scale-105', 'z-10');
+    } else {
+      c1.classList.remove('scale-105', 'z-10');
+      c2.classList.add('scale-105', 'z-10');
+    }
+    toggle = !toggle;
+  }, 2000);
+})();
+
 function scrollToBottom() {
   window.scrollTo({
     top: document.body.scrollHeight,
@@ -17,33 +34,34 @@ function scrollToBottom() {
 
 (function isloggedin(){
   if(localStorage.getItem("token")){
-    login.classList.remove("inline-block");
     login.classList.add("hidden");
-    profile.classList.remove("hidden");
+    login.classList.remove("inline-block");
     profile.classList.add("inline-block");
+    profile.classList.remove("hidden");
   } else {
-    profile.classList.remove("inline-block");
     profile.classList.add("hidden");
-    login.classList.remove("hidden");
+    profile.classList.remove("inline-block");
     login.classList.add("inline-block");    
+    login.classList.remove("hidden");
   }
 })()
 
 async function getItems() {
   try {
-    let response = await fetch("https://ecokart-app.onrender.com/EcoKart/data");
+    let response = await fetch("http://192.168.0.176:8000/EcoKart/data");
     if (!response.ok) {
       container.innerHTML = "<h1> No Items Found...</h1>";
     } else {
       data = await response.json();
       let itemarray = data.message;
-      console.log(itemarray);
+      // console.log(itemarray);
       // cards are displayed from here..
-      let r = Math.floor(Math.random() * array.length);
-      // card1.src=itemarray[r].imageurl;
+      let r = Math.floor(Math.random() * itemarray.length);
+      card1.src=itemarray[r].imageurl;
       card1h3.textContent=itemarray[r].name;
       card1p.textContent=itemarray[r].description;
-      r = Math.floor(Math.random() * array.length);
+
+      r = Math.floor(Math.random() * itemarray.length);
       card2.src=itemarray[r].imageurl;
       card2h3.textContent=itemarray[r].name;
       card2p.textContent=itemarray[r].description;
