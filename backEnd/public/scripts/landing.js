@@ -25,9 +25,18 @@ const card2p = document.getElementById('card2p');
   }, 2000);
 })();
 
+// footer scrool..
 function scrollToBottom() {
   window.scrollTo({
     top: document.body.scrollHeight,
+    behavior: "smooth" // makes the scroll smooth
+  });
+}
+// products scroll...
+function products() {
+  window.scrollTo({
+    top: 620,
+    left: 0,
     behavior: "smooth" // makes the scroll smooth
   });
 }
@@ -68,40 +77,84 @@ async function getItems() {
       
       for (let i of itemarray) {
         let div1 = document.createElement("div");
-        div1.id = i.id;
-        div1.addEventListener("click", (e) => {
-          localStorage.setItem("id", JSON.parse(e.currentTarget.id));
-          // this way the element which has the eventlistner will be the target..not the children
-          window.location.href = "/EcoKart/product";
-        });
-        div1.className =
-          "bg-white rounded-lg shadow-xl overflow-hidden flex flex-col items-center h-80 sm:h-100 md:h-100 cursor-pointer";
-        let img = document.createElement("img");
-        img.src = i.imageurl;
-        img.alt = "item image";
-        img.className = "w-full h-70 object-cover mb-2";
-        let h4 = document.createElement("h4");
-        h4.textContent = i.name;
-        h4.className =
-          "text-md sm:text-lg md:text-lg font-semibold text-green-700 m-2";
-        let h3 = document.createElement("h3");
-        h3.className = "text-lg font-bold text-green-500 mb-2";
-        let sp1 = document.createElement("span");
-        sp1.textContent = "₹";
-        let sp2 = document.createElement("span");
-        sp2.textContent = i.price; //price
-        h3.appendChild(sp1);
-        h3.appendChild(sp2);
-        // let p = document.createElement("p");
-        // p.className = "text-green-800 mb-4 text-center";
-        // p.textContent = i.description;
-        div1.appendChild(img);
-        div1.appendChild(h4);
-        div1.appendChild(h3);
-        // div1.appendChild(p);
+div1.id = i.id;
 
-        // for each loop the items are appended here
-        container.appendChild(div1);
+div1.addEventListener("click", (e) => {
+  localStorage.setItem("id", JSON.parse(e.currentTarget.id));
+  window.location.href = "/EcoKart/product";
+});
+
+// Card container with group hover
+div1.className = `
+  relative w-full max-w-xs sm:max-w-sm md:max-w-md 
+  h-72 sm:h-80 md:h-96 
+  rounded-xl overflow-hidden 
+  cursor-pointer group
+  transform transition duration-400 ease-in-out
+`;
+
+// Background image as full cover
+let bgImg = document.createElement("div");
+bgImg.style.backgroundImage = `url(${i.imageurl})`;
+bgImg.className = `
+  absolute inset-0 bg-cover bg-center 
+  group-hover:scale-105 transition-transform duration-500 ease-in-out
+`;
+
+// Dark overlay for readability
+let overlay = document.createElement("div");
+overlay.className = `
+  absolute inset-0 bg-black/40 
+  group-hover:bg-black/5 
+  transition-colors duration-300
+`;
+
+// Content wrapper (text on top of image)
+let content = document.createElement("div");
+content.className = `
+  relative z-10 flex flex-col items-center justify-end 
+  h-full text-white text-center p-4
+`;
+
+// Product name
+let h4 = document.createElement("h4");
+h4.textContent = i.name;
+h4.className = `
+  text-md sm:text-xl md:text-2xl 
+  font-semibold mb-2 drop-shadow-md
+`;
+
+// Price
+let h3 = document.createElement("h3");
+h3.className = `text-xl font-bold text-green-300 drop-shadow-md`;
+let sp1 = document.createElement("span");
+sp1.textContent = "₹";
+let sp2 = document.createElement("span");
+sp2.textContent = i.price;
+h3.appendChild(sp1);
+h3.appendChild(sp2);
+
+// Optional: View button
+let btn = document.createElement("div");
+btn.textContent = "View Product";
+btn.className = `
+  mt-4 inline-block px-4 py-2 
+  bg-white/10 border border-white/30 rounded-full 
+  text-sm font-medium 
+  hover:bg-white/20 transition
+`;
+
+// Append content
+content.appendChild(h4);
+content.appendChild(h3);
+content.appendChild(btn);
+
+// Assemble the card
+div1.appendChild(bgImg);
+div1.appendChild(overlay);
+div1.appendChild(content);
+container.appendChild(div1);
+
       }
     }
   } catch (error) {

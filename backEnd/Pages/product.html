@@ -7,41 +7,27 @@
     <link rel ='icon' href="/images/logo.png">
     <title>EcoKart</title>
   </head>
-    <header class="w-full bg-green-100 py-6 shadow-md">
-      <div class="max-w-6xl mx-auto px-4 flex items-center justify-between">
-        <h1 onclick="window.location='/EcoKart/home'" class="text-3xl font-bold text-green-700 cursor-pointer">
-          EcoKart
-        </h1>
-        <nav>
-          <img
-          onclick="scrollToBottom()"
-            src="/images/person.png"
-            alt="About"
-            class="w-10 h-10 rounded mx-3 inline-block cursor-pointer"
-          />
-          <!--toggle hidden-->
-          <img
-            src="/images/cart.png"
-            alt="Cart"
-            class="w-10 h-10 rounded mx-3 inline-block cursor-pointer"
-            onclick="window.location.href='/EcoKart/cart'"
-          />
-          <!--toggle hidden-->
-          <img
-            src="/images/user.png"
-            alt="Profile"
-            class="hidden w-10 h-10 rounded mx-3 cursor-pointer"
-            onclick="window.location='/EcoKart/profile'"
-            id="profile"
-          />
-          <!--toggle hidden-->
-          <a id="login" onclick="window.location.href='/EcoKart'" class="text-red-700 font-medium mx-2 cursor-pointer inline-block hover:border-b-3 hover:border-red-700"
-            >Login</a
-          >
-          <!--toggle hidden-->
-        </nav>
-      </div>
-    </header>
+  <header class="w-full bg-green-200 py-6">
+    <div class="max-w-6xl mx-auto px-4 flex items-center justify-between">
+      <h1 class="text-3xl font-bold text-green-900 cursor-pointer" title="Home">
+        EcoKart
+      </h1>
+      <nav class="flex gap-6">
+        <img onclick="scrollToBottom()" src="/images/info.png" alt="About" title="Info"
+          class="w-10 h-10 rounded ml-3 inline-block cursor-pointer ease-in duration-100 hover:border-b-3 border-green-700" />
+        <img src="/images/cart.png" alt="Cart" title="Cart" 
+        class="w-10 h-10 rounded ml-3 inline-block cursor-pointer ease-in duration-100 hover:border-b-3 border-green-700"
+          onclick="window.location.href='/EcoKart/cart'" />
+        <img src="/images/user.png" alt="Profile" title="Profile" 
+        class="hidden w-10 h-10 rounded ml-3 cursor-pointer ease-in duration-100 hover:border-b-3 border-green-700"
+          onclick="window.location='/EcoKart/profile'" id="profile" />
+        <!--toggle hidden-->
+        <a id="login" onclick="window.location.href='/EcoKart'" title="Login"
+          class="text-red-700 rounded inline-block font-medium cursor-pointer ease-in duration-100 hover:border-b-3 border-red-700">Login</a>
+        <!--toggle hidden-->
+      </nav>
+    </div>
+  </header>
   <body class="bg-green-50 font-sans">
     <div id="productContainer" class="max-w-5xl mx-auto my-4 bg-green-100 p-6 rounded-lg shadow">
       <!-- Product details will be dynamically added -->      

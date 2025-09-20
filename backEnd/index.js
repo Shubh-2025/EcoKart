@@ -49,7 +49,7 @@ app.get("/EcoKart/profile", (req, res) => {
 // sending items data (landing page)
 app.get("/EcoKart/data", async (req, res) => {
     try {
-        let response = await pool.query("select * from product");
+        let response = await pool.query("select * from product order by id");
         // console.log(response);
         if (response.rows.length > 0) {
             // console.log(response.rows); // ok
