@@ -8,5 +8,6 @@ const { Pool } = pkg;
 const pool = new Pool ({
     connectionString :process.env.SUPABASE_URI, //supabase key
     max : 100,
+    ssl: { rejectUnauthorized: false }
 });
 export default pool;
