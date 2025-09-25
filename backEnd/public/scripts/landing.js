@@ -109,7 +109,7 @@ function products() {
 
 async function getItems() {
   try {
-    let response = await fetch("https://localhost:2004/EcoKart/data");
+    let response = await fetch("https://ecokart-app.onrender.com/EcoKart/data");
     if (!response.ok) {
       container.innerHTML = "<h1> No Items Found...</h1>";
     } else {
