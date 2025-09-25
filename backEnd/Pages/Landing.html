@@ -5,11 +5,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <head>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-</head>
   <link rel="icon" href="/images/logo.png" />
   <title>EcoKart</title>
+  <style>
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    .animate-slideIn {
+      /* animation: slideIn 1s cubic-bezier(.4, 0, .2, 1); */
+      animation: slideIn 1s ease-in;
+    }
+  </style>
 </head>
 
 <body class="w-full h-full bg-green-50 outline-none">
@@ -20,54 +35,59 @@
       </h1>
       <nav class="flex gap-6">
         <img onclick="scrollToBottom()" src="/images/info.png" alt="About" title="Info"
-          class="w-10 h-10 rounded ml-3 inline-block cursor-pointer ease-in duration-100 hover:border-b-3 border-green-700" />
-        <img src="/images/cart.png" alt="Cart" title="Cart" 
-        class="w-10 h-10 rounded ml-3 inline-block cursor-pointer ease-in duration-100 hover:border-b-3 border-green-700"
+          class="w-10 h-10 rounded lg:ml-3 inline-block cursor-pointer ease-in duration-100 hover:border-b-3 border-green-700" />
+        <img src="/images/cart.png" alt="Cart" title="Cart"
+          class="w-10 h-10 rounded lg:ml-3 inline-block cursor-pointer ease-in duration-100 hover:border-b-3 border-green-700"
           onclick="window.location.href='/EcoKart/cart'" />
-        <img src="/images/user.png" alt="Profile" title="Profile" 
-        class="hidden w-10 h-10 rounded ml-3 cursor-pointer ease-in duration-100 hover:border-b-3 border-green-700"
+        <img src="/images/user.png" alt="Profile" title="Profile"
+          class="hidden w-10 h-10 rounded lg:ml-3 cursor-pointer ease-in duration-100 hover:border-b-3 border-green-700"
           onclick="window.location='/EcoKart/profile'" id="profile" />
         <!--toggle hidden-->
-        <a id="login" onclick="window.location.href='/EcoKart'" title="Login"
-          class="text-red-700 rounded inline-block font-medium cursor-pointer ease-in duration-100 hover:border-b-3 border-red-700">Login</a>
+        <img id="login" src="/images/login.png" onclick="window.location.href='/EcoKart'" title="Login"
+          class="w-20 h-10 rounded lg:ml-3 inline-block cursor-pointer ease-in duration-100 hover:border-b-3 border-green-700 object-contain"/>
         <!--toggle hidden-->
       </nav>
     </div>
   </header>
 
   <section class="relative bg-green-200 h-[70vh] gap-3 flex flex-col justify-center">
-    <div
-      class="absolute bg-green-200 w-full h-full " >
+    <div class="absolute bg-green-200 w-full h-full ">
     </div>
-    <div  class="flex items-center max-w-[90vw]">
-     
-      <div id="one" class=" h-[45%] w-[90%] absolute left-[5%] top-[50%] md:left-[33%] md:top-[35%] md:w-[30%] md:h-[55%] transform rotate-[-5deg] z-5  transition-transform duration-900 ease-in">
-          <div class="h-full w-full rounded-xl shadow-2xl p-10 w-[340px]  flex flex-col items-center justify-between object-cover">
-            <img  id="card1" alt="card" class="z-0 absolute inset-0 w-full h-full mb-4 rounded shadow-lg object-cover" />
-            <h3 id="card1h3" class=" text-white text-shadow-xl text-2xl font-bold mb-2 z-1"></h3>
-            <p id="card1p" class=" text-white text-base mb-4 text-center z-1">
+    <div class="flex items-center max-w-[90vw]">
 
-            </p>
-            <button onclick="products()" class="z-1 bg-white text-green-700 font-semibold px-6 py-2 rounded-full shadow hover:bg-green-200 transition cursor-pointer">
-              Shop Now
-            </button>
-          </div>
-        </div>
-      <div id="two" class=" h-[45%] w-[90%] absolute left-[5%] top-[50%] md:left-[37%] md:top-[35%] md:w-[30%] md:h-[55%] transform rotate-[5deg] z-5  transition-transform duration-900 ease-in">
-          <div  class=" h-full w-full rounded-xl shadow-2xl p-10 w-[340px] flex flex-col items-center justify-between object-cover">
-            <img  id="card2" alt="card" class="z-0 absolute inset-0 w-full h-full mb-4 rounded shadow-lg object-cover" />
-            <h3 id="card2h3" class="text-white text-shadow-xl text-2xl font-bold mb-2 z-1"></h3>
-            <p id="card2p" class="text-white text-base mb-4 text-center z-1">
+      <div id="one"
+        class=" h-[45%] w-[90%] absolute left-[5%] top-[50%] md:left-[33%] md:top-[35%] md:w-[30%] md:h-[55%] transform rotate-[-5deg] z-5  transition-transform duration-900 ease-in">
+        <div
+          class="h-full w-full rounded-xl shadow-2xl p-10 w-[340px]  flex flex-col items-center justify-between object-cover">
+          <img id="card1" alt="card" class="z-0 absolute inset-0 w-full h-full mb-4 rounded shadow-lg object-cover" />
+          <h3 id="card1h3" class=" text-white text-shadow-xl text-2xl font-bold mb-2 z-1"></h3>
+          <p id="card1p" class=" text-white text-base mb-4 text-center z-1">
 
-            </p>
-            <button onclick="products()" class="z-1 bg-white text-green-700 font-semibold px-6 py-2 rounded-full shadow hover:bg-green-200 transition cursor-pointer">
-              Shop Now
-            </button>
-          </div>
+          </p>
+          <button onclick="products()"
+            class="z-1 bg-white text-green-700 font-semibold px-6 py-2 rounded-full shadow hover:bg-green-200 transition cursor-pointer">
+            Shop Now
+          </button>
         </div>
+      </div>
+      <div id="two"
+        class=" h-[45%] w-[90%] absolute left-[5%] top-[50%] md:left-[37%] md:top-[35%] md:w-[30%] md:h-[55%] transform rotate-[5deg] z-5  transition-transform duration-900 ease-in">
+        <div
+          class=" h-full w-full rounded-xl shadow-2xl p-10 w-[340px] flex flex-col items-center justify-between object-cover">
+          <img id="card2" alt="card" class="z-0 absolute inset-0 w-full h-full mb-4 rounded shadow-lg object-cover" />
+          <h3 id="card2h3" class="text-white text-shadow-xl text-2xl font-bold mb-2 z-1"></h3>
+          <p id="card2p" class="text-white text-base mb-4 text-center z-1">
+
+          </p>
+          <button onclick="products()"
+            class="z-1 bg-white text-green-700 font-semibold px-6 py-2 rounded-full shadow hover:bg-green-200 transition cursor-pointer">
+            Shop Now
+          </button>
+        </div>
+      </div>
     </div>
 
-    <div class="text-gray-700 relative w-full h-full text-center z-4 rounded p-8" >
+    <div class="text-gray-700 relative w-full h-full text-center z-4 rounded p-8">
       <h2 class=" w-full text-4xl mx-2 font-bolder mb-4">
         Shop Eco-Friendly. Live Healthy.
       </h2>
@@ -75,6 +95,23 @@
         Discover a curated selection of sustainable products for a greener
         tomorrow.
       </p>
+    </div>
+  </section>
+
+  <section class="w-full flex flex-col items-center py-12 bg-green-200">
+    <h3 class="text-2xl font-bold text-green-700 mb-6 text-center">Customer Reviews</h3>
+    <div class="relative w-[90%] lg:w-full max-w-xl h-72 flex items-center rounded justify-center overflow-hidden">
+      <div id="reviewSlider" class="absolute w-full h-full transition-transform duration-700 ease-in-out overflow-hidden">
+        <!-- Review cards will be injected here -->
+      </div>
+      <button id="prevReview"
+        class="absolute left-2 top-1/2 -translate-y-1/2 bg-white rounded-full shadow p-2 hover:bg-green-200 transition">
+        <i class="fa fa-chevron-left text-green-700"></i>
+      </button>
+      <button id="nextReview"
+        class="absolute right-2 top-1/2 -translate-y-1/2 bg-white rounded-full shadow p-2 hover:bg-green-200 transition">
+        <i class="fa fa-chevron-right text-green-700"></i>
+      </button>
     </div>
   </section>
 
