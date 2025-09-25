@@ -8,7 +8,7 @@ import dotenv from "dotenv";
 // dotenv config
 dotenv.config();
 
-const PORT = process.env.PORT;
+const PORT = 5000;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -148,7 +148,7 @@ try {
     const connection = await pool.connect(); // first connect and test
     connection.release(); // then close the connection if everything is ok...
     app.listen(PORT, () => {
-        console.log(`App is running on https://ecokart.onrender.com/EcoKart/home`);
+        console.log(`App is running on http://localhost:${PORT}`);
     });
 } catch (error) {
     console.log(error.message,"\nDataBase connection failed...");
