@@ -111,16 +111,19 @@ function renderCart() {
       const subtotal = item.qty * item.price;
       total += subtotal;
       const tr = document.createElement("tr");
-      tr.innerHTML = `
-                        <td class="px-4 py-3">${item.name}</td>
-                        <td class="px-4 py-3">${item.qty}</td>
-                        <td class="px-4 py-3">₹${item.price.toFixed(2)}</td>
-                        <td class="px-4 py-3">₹${subtotal.toFixed(2)}</td>
-                        <td class="px-4 py-3">
-                            <button onclick="removeItem(${index
-        })" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded transition">Remove</button>
-                        </td>
-                    `;
+
+tr.innerHTML = `
+  <td class="px-2 sm:px-3 py-2 text-xs sm:text-sm break-words">${item.name}</td>
+  <td class="px-2 sm:px-3 py-2 text-xs sm:text-sm">${item.qty}</td>
+  <td class="px-2 sm:px-3 py-2 text-xs sm:text-sm">₹${item.price.toFixed(2)}</td>
+  <td class="px-2 sm:px-3 py-2 text-xs sm:text-sm">₹${subtotal.toFixed(2)}</td>
+  <td class="px-2 sm:px-3 py-2">
+    <button onclick="removeItem(${index})"
+      class="bg-red-500 hover:bg-red-600 text-white px-2 sm:px-3 py-1 text-xs sm:text-sm rounded">
+      Remove
+    </button>
+  </td>
+`;
       tbody.appendChild(tr);
     });
     document.getElementById("checkout-btn").disabled = false;

@@ -1,8 +1,8 @@
 import pkg from "pg";
 // dotenv import
-import dotenv from "dotenv";
-// dotenv config
-dotenv.config();
+// import dotenv from "dotenv";
+// // dotenv config
+// dotenv.config();
 
 const { Pool } = pkg;
 const pool = new Pool ({

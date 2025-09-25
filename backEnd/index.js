@@ -3,10 +3,10 @@ import cors from "cors";
 import pool from "./db.js";
 import { fileURLToPath } from "url";
 import path from "path";
-// dotenv import
-import dotenv from "dotenv";
-// dotenv config
-dotenv.config();
+// // dotenv import
+// import dotenv from "dotenv";
+// // dotenv config
+// dotenv.config();
 
 const PORT = 5000;
 
@@ -148,7 +148,7 @@ try {
     const connection = await pool.connect(); // first connect and test
     connection.release(); // then close the connection if everything is ok...
     app.listen(PORT, () => {
-        console.log(`App is running on http://localhost:${PORT}`);
+        console.log(`App is running on http://localhost:${PORT}/EcoKart/home`);
     });
 } catch (error) {
     console.log(error.message,"\nDataBase connection failed...");

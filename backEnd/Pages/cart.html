@@ -39,32 +39,24 @@
     <h2 class="text-2xl p-2 sm:text-2xl font-semibold mb-4 sm:mb-6">
       Your Shopping Cart
     </h2>
-    <div class="overflow-x-hidden w-[95%] lg:w-full">
-      <table class="w-full mb-8 flex-wrap">
-        <thead>
-          <tr>
-            <th class="bg-green-100 px-3 py-2 text-left text-xs sm:text-base">
-              Product
-            </th>
-            <th class="bg-green-100 px-3 py-2 text-left text-xs sm:text-base">
-              Qty
-            </th>
-            <th class="bg-green-100 px-3 py-2 text-left text-xs sm:text-base">
-              Price
-            </th>
-            <th class="bg-green-100 px-3 py-2 text-left text-xs sm:text-base">
-              Subtotal
-            </th>
-            <th class="bg-green-100 px-3 py-2 text-left text-xs sm:text-base">
-              Remove
-            </th>
-          </tr>
-        </thead>
-        <tbody id="cart-items">
-          <!-- Cart items will be dynamically inserted here -->
-        </tbody>
-      </table>
-    </div>
+<div class="w-full">
+  <table class="table-fixed w-full border-collapse text-sm sm:text-base">
+    <thead>
+      <tr class="bg-green-100">
+        <th class="px-2 sm:px-3 py-2 text-left">Product</th>
+        <th class="px-2 sm:px-3 py-2 text-left">Qty</th>
+        <th class="px-2 sm:px-3 py-2 text-left">Price</th>
+        <th class="px-2 sm:px-3 py-2 text-left">Subtotal</th>
+        <th class="px-2 sm:px-3 py-2 text-left">Remove</th>
+      </tr>
+    </thead>
+    <tbody id="cart-items" class="break-words">
+      <!-- JS will inject rows -->
+    </tbody>
+  </table>
+</div>
+
+
         <!-- ✅ Address, Shipping & Order Status Section -->
     <div id="Details" class="w-full mx-auto my-8 bg-green-100 rounded border-t-2 shadow p-6 hidden"> <!-- after pressing the checkout thid should pop up -->
       <h3 class="text-xl font-semibold mb-4 text-green-700">Delivery Details</h3>
