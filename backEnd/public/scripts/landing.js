@@ -87,7 +87,7 @@ function scrollToBottom() {
 // products scroll...
 function products() {
   window.scrollTo({
-    top: 1400,
+    top: 1100,
     left: 0,
     behavior: "smooth" // makes the scroll smooth
   });
@@ -109,7 +109,7 @@ function products() {
 
 async function getItems() {
   try {
-    let response = await fetch("https://ecokart.onrender.com/EcoKart/data");
+    let response = await fetch("http://localhost:2004/EcoKart/data");
     if (!response.ok) {
       container.innerHTML = "<h1> No Items Found...</h1>";
     } else {
