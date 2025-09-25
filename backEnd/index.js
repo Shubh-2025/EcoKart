@@ -58,8 +58,8 @@ app.get("/EcoKart/data", async (req, res) => {
             res.status(400).json({ message: " no data found" })
         }
     } catch (error) {
-        res.status(500).json({ message: "Internal server error" })
         console.log(error.message);
+        res.status(500).json({ message: "Internal server error" })
     }
 });
 // api routes exposed to the frontend.
@@ -148,7 +148,7 @@ try {
     const connection = await pool.connect(); // first connect and test
     connection.release(); // then close the connection if everything is ok...
     app.listen(PORT, () => {
-        console.log(`DataBase connected \nApp is Listening on Port ${PORT} \napp is running....`);
+        console.log(`App is running on https://ecokart.onrender.com/EcoKart/home`);
     });
 } catch (error) {
     console.log(error.message,"\nDataBase connection failed...");

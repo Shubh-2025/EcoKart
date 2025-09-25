@@ -6,8 +6,8 @@ dotenv.config();
 
 const { Pool } = pkg;
 const pool = new Pool ({
-    connectionString :process.env.SUPABASE_URI, //supabase key
+    connectionString : "postgresql://postgres.dvcafhqgxpvmpzhjitee:ShubhranilSupabase@aws-1-ap-southeast-1.pooler.supabase.com:6543/postgres"
+, //supabase key
     max : 100,
-    ssl: { rejectUnauthorized: false }
 });
 export default pool;
