@@ -5,17 +5,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function initializeApp() {
     // DOM elements
-    const container = document.getElementById("itemContainer");
+    // const container = document.getElementById("itemContainer");
     const login = document.getElementById('login');
     const profile = document.getElementById('profile');
     const profileMobile = document.getElementById('profileMobile');
     const loginMobile = document.getElementById('loginMobile');
-    const card1 = document.getElementById('card1');
-    const card1h3 = document.getElementById('card1h3');
-    const card1p = document.getElementById('card1p');
-    const card2 = document.getElementById('card2');
-    const card2h3 = document.getElementById('card2h3');
-    const card2p = document.getElementById('card2p');
+    // const card1 = document.getElementById('card1');
+    // const card1h3 = document.getElementById('card1h3');
+    // const card1p = document.getElementById('card1p');
+    // const card2 = document.getElementById('card2');
+    // const card2h3 = document.getElementById('card2h3');
+    // const card2p = document.getElementById('card2p');
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const closeMenu = document.getElementById('closeMenu');

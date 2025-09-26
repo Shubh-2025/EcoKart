@@ -20,20 +20,21 @@
         transform: translateX(0);
       }
     }
+
     .animate-slideIn {
       animation: slideIn 1s ease-in;
     }
-    
+
     /* Mobile menu styles */
     #mobileMenu {
       transform: translateX(-100%);
       transition: transform 0.3s ease-in-out;
     }
-    
+
     #mobileMenu.open {
       transform: translateX(0);
     }
-    
+
     body.menu-open {
       overflow: hidden;
     }
@@ -43,9 +44,12 @@
 <body class="w-full h-full bg-green-50 outline-none">
   <header class="w-full bg-green-200 py-6">
     <div class="max-w-6xl mx-auto px-4 flex items-center justify-between">
-      <h1 class="text-3xl font-bold text-green-900 cursor-pointer" title="Home">
-        EcoKart
-      </h1>
+      <div class="flex">
+        <img src="/images/eco-awareness.png" alt="EcoKart" class=" w-10 h-10 rounded cursor-pointer ">
+        <h1 class="text-3xl font-bold text-green-900 cursor-pointer" title="Home">
+          EcoKart
+        </h1>
+      </div>
       <!-- Desktop Nav -->
       <nav class="hidden md:flex gap-6">
         <img onclick="reviewscroll()" src="/images/favorite.png" alt="Review" title="Reviews"
@@ -62,10 +66,10 @@
           onclick="window.location='/EcoKart/profile'" id="profile" />
         <!--toggle hidden-->
         <img id="login" src="/images/login.png" onclick="window.location.href='/EcoKart'" title="Login"
-          class="w-10 h-5 lg:w-20 h-10 rounded lg:ml-3 inline-block cursor-pointer ease-in duration-100 hover:border-b-3 border-green-700 object-contain"/>
+          class="w-10 h-5 lg:w-20 h-10 rounded lg:ml-3 inline-block cursor-pointer ease-in duration-100 hover:border-b-3 border-green-700 object-contain" />
         <!--toggle hidden-->
       </nav>
-      
+
       <!-- Mobile Hamburger -->
       <div class="md:hidden flex items-center">
         <button id="menuBtn" aria-label="Open menu" class="p-2 rounded focus:outline-none z-40">
@@ -78,28 +82,43 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobileMenu" class="fixed inset-0 bg-green-100 bg-opacity-95 flex flex-col items-center justify-center gap-8 z-40">
-      <button id="closeMenu" aria-label="Close menu" class="absolute top-6 right-6 p-2 z-50">
+    <div id="mobileMenu"
+      class="w-[70%] shadow-2xl fixed inset-0 bg-green-200 flex flex-col items-center justify-center gap-8 z-40">
+      <button id="closeMenu" aria-label="Close menu" class="absolute top-6 w-5 h-5 right-6 p-2 z-50">
         <!-- Close icon -->
-        <svg class="w-8 h-8 text-green-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- <svg class="w-8 h-8 text-green-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
+        </svg> -->
+        <i class="fa fa-chevron-left text-black"></i>
+
       </button>
 
-      <img onclick="reviewscroll();closeMobileMenu()" src="/images/favorite.png" alt="Review" title="Reviews"
-           class="w-10 h-10 rounded cursor-pointer" />
-      <img src="/images/office.png" alt="About" title="About Us"
-           class="w-10 h-10 rounded cursor-pointer" />
-      <img onclick="scrollToBottom();closeMobileMenu()" src="/images/info.png" alt="Info" title="Info"
-           class="w-10 h-10 rounded cursor-pointer" />
-      <img src="/images/cart.png" alt="Cart" title="Cart"
-           class="w-10 h-10 rounded cursor-pointer"
-           onclick="window.location.href='/EcoKart/cart';closeMobileMenu()" />
-      <img src="/images/user.png" alt="Profile" title="Profile"
-           class="hidden w-10 h-10 rounded cursor-pointer"
-           onclick="window.location='/EcoKart/profile';closeMobileMenu()" id="profileMobile" />
-      <img id="loginMobile" src="/images/login.png" onclick="window.location.href='/EcoKart';closeMobileMenu()" title="Login"
-           class="w-20 h-10 rounded cursor-pointer object-contain"/>
+      <!-- <div class="absolute top-5 left-5 flex"><img src="/images/eco-awareness.png" alt="EcoKart"
+          class=" w-10 h-10 rounded cursor-pointer ">
+        <h1 class="text-3xl font-bold text-green-900 cursor-pointer" title="Home">EcoKart</h1>
+      </div> -->
+
+      <div class="flex flex-col items-center" ><img onclick="reviewscroll();closeMobileMenu()" src="/images/favorite.png" alt="Review" title="Reviews"
+          class="w-10 h-10 rounded cursor-pointer" />
+        <h1>Reviews</h1>
+      </div>
+      <div class="flex flex-col items-center"><img src="/images/office.png" alt="About" title="About Us" class="w-10 h-10 rounded cursor-pointer" />
+        <h1>About Us</h1>
+      </div>
+      <div class="flex flex-col items-center"><img onclick="scrollToBottom();closeMobileMenu()" src="/images/info.png" alt="Info" title="Info"
+          class="w-10 h-10 rounded cursor-pointer" />
+        <h1>Info</h1>
+      </div>
+      <div class="flex flex-col items-center"><img src="/images/cart.png" alt="Cart" title="Cart" class="w-10 h-10 rounded cursor-pointer"
+          onclick="window.location.href='/EcoKart/cart';closeMobileMenu()" />
+        <h1>Cart</h1>
+      </div>
+      <div class="flex flex-col items-center" id="profileMobile"><img src="/images/user.png" alt="Profile" title="Profile" class="hidden w-10 h-10 rounded cursor-pointer"
+          onclick="window.location='/EcoKart/profile';closeMobileMenu()"  />
+        <h1>Profile</h1>
+      </div>
+      <img id="loginMobile" src="/images/login.png" onclick="window.location.href='/EcoKart';closeMobileMenu()"
+        title="Login" class="w-20 h-10 rounded cursor-pointer object-contain" />
     </div>
   </header>
 
@@ -154,7 +173,8 @@
   <section class="w-full flex flex-col items-center py-12 bg-green-200">
     <h3 class="text-2xl font-bold text-green-700 mb-6 text-center">Customer Reviews</h3>
     <div class="relative w-[90%] lg:w-full max-w-xl h-72 flex items-center rounded justify-center overflow-hidden">
-      <div id="reviewSlider" class="absolute w-full h-full transition-transform duration-700 ease-in-out overflow-hidden">
+      <div id="reviewSlider"
+        class="absolute w-full h-full transition-transform duration-700 ease-in-out overflow-hidden">
         <!-- Review cards will be injected here -->
       </div>
       <button id="prevReview"
@@ -174,32 +194,27 @@
     </h3>
 
     <div class="flex justify-start space-x-4 mb-4 overflow-x-auto p-4">
-      <button
-      onclick="getItems()"
+      <button onclick="getItems()"
         class="inline-block text-white bg-green-500 px-6 py-3 mb-8 rounded-2xl font-semibold hover:bg-green-400 transition cursor-pointer shadow-xl">
         <i class="fa fa-filter fa-x"></i>
         Filters
       </button>
-      <button
-      onclick="getItems('Premium')"
+      <button onclick="getItems('Premium')"
         class="inline-block border text-green-500 px-6 py-3 mb-8 rounded-2xl font-semibold hover:bg-green-500 hover:text-white transition cursor-pointer shadow-xl">
         <i class="fa fa-star fa-x"></i>
         Premium
       </button>
-      <button
-      onclick="getItems('Daily Essentials')"
+      <button onclick="getItems('Daily Essentials')"
         class="inline-block border text-green-500 px-6 py-3 mb-8 rounded-2xl font-semibold hover:bg-green-500 hover:text-white transition cursor-pointer shadow-xl">
         <i class="fa fa-home fa-x"></i>
         Daily essentials
       </button>
-      <button
-      onclick="getItems('Stationary')"
+      <button onclick="getItems('Stationary')"
         class="inline-block border text-green-500 px-6 py-3 mb-8 rounded-2xl font-semibold hover:bg-green-500 hover:text-white transition cursor-pointer shadow-xl">
         <i class="fa fa-book fa-x"></i>
         Stationary
       </button>
-      <button
-      onclick="getItems('Gardening')"
+      <button onclick="getItems('Gardening')"
         class="inline-block border text-green-500 px-6 py-3 mb-8 rounded-2xl font-semibold hover:bg-green-500 hover:text-white transition cursor-pointer shadow-xl">
         <i class="fa fa-tree fa-x"></i>
         Gardening
